@@ -217,9 +217,19 @@ def parse_agenda_items(page):
 # ---------------------------------------------------------------------------
 # Step 3: keyword matching
 # ---------------------------------------------------------------------------
+# Phrases that suppress an item even if it matched a trigger (populated by
+# load_keyword_groups from the "exclude" list in keywords.json).
+EXCLUDE_PATTERNS = []
+
+
 def load_keyword_groups():
+    global EXCLUDE_PATTERNS
     with open(KEYWORDS_FILE, "r", encoding="utf-8") as f:
         cfg = json.load(f)
+    EXCLUDE_PATTERNS = [
+        re.compile(r"(?<!\w)" + re.escape(t).replace(r"\ ", r"\s+") + r"(?!\w)", re.I)
+        for t in cfg.get("exclude", [])
+    ]
     groups = []
     for g in cfg["groups"]:
         patterns = []
@@ -244,6 +254,10 @@ def match_item(item, groups):
     context to an item that already matched a trigger -- they never flag alone.
     """
     hay = item["title"]
+    # Suppress items whose subject matter is explicitly excluded.
+    for pat in EXCLUDE_PATTERNS:
+        if pat.search(hay):
+            return 0, []
     matches = []
     hit_groups = {}
     triggered = False

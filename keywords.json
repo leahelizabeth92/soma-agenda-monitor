@@ -1,6 +1,16 @@
 {
   "_comment": "Edit this file to tune what the scanner flags. Each group has a 'label', a 'weight' (higher = sorts to top), a 'trigger' flag, and a list of 'terms'. Terms match as whole words, case-insensitive; multi-word terms match the phrase. IMPORTANT: an agenda item is only flagged if it matches at least one group with \"trigger\": true. Groups with \"trigger\": false (like generic contract words) add detail and score to an already-flagged item, but never flag an item on their own -- this keeps out noise like routine copier leases. To add a term, add it to the list and save. To stop matching something, delete it. No coding needed.",
 
+  "_exclude_comment": "If an item contains ANY phrase below, it is dropped even when it matched a trigger above. Use this to silence items that touch an agency you track (HSH/DPH/MOHCD) but don't affect SOMA West street conditions or services -- e.g. citywide street/sidewalk boundary ordinances, hospital capital gifts/namings, jail/inmate programs. Add a phrase to silence a recurring false positive; remove one to let it back in.",
+  "exclude": [
+    "Street Dedication",
+    "Sidewalk Width",
+    "Street Vacation",
+    "Capital Gift",
+    "Naming Agreement",
+    "Inmate"
+  ],
+
   "groups": [
     {
       "id": "soma_geo",
