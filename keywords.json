@@ -1,0 +1,102 @@
+{
+  "_comment": "Edit this file to tune what the scanner flags. Each group has a 'label', a 'weight' (higher = sorts to top), a 'trigger' flag, and a list of 'terms'. Terms match as whole words, case-insensitive; multi-word terms match the phrase. IMPORTANT: an agenda item is only flagged if it matches at least one group with \"trigger\": true. Groups with \"trigger\": false (like generic contract words) add detail and score to an already-flagged item, but never flag an item on their own -- this keeps out noise like routine copier leases. To add a term, add it to the list and save. To stop matching something, delete it. No coding needed.",
+
+  "groups": [
+    {
+      "id": "soma_geo",
+      "label": "SOMA West / geography",
+      "trigger": true,
+      "weight": 5,
+      "terms": [
+        "SOMA", "South of Market", "SoMa West", "Western SOMA", "East SOMA",
+        "District 6", "Sixth Street", "6th Street",
+        "1125 Mission", "921 Howard", "444 6th", "1026 Mission", "1028 Mission",
+        "Folsom Dore", "Bayanihan", "1174 Folsom"
+      ]
+    },
+    {
+      "id": "homelessness",
+      "label": "Homelessness / shelter / supportive housing",
+      "trigger": true,
+      "weight": 4,
+      "terms": [
+        "homeless", "homelessness", "unhoused", "encampment", "encampments",
+        "shelter", "shelters", "navigation center", "Safe Sleep", "Safe Sleeping",
+        "supportive housing", "permanent supportive housing", "interim housing",
+        "SIP hotel", "tiny home", "tiny cabin", "congregate",
+        "One City Shelter", "Family Shelter", "homeless services", "Our City Our Home"
+      ]
+    },
+    {
+      "id": "public_safety",
+      "label": "Public safety / policing",
+      "trigger": true,
+      "weight": 4,
+      "terms": [
+        "public safety", "SFPD", "Police Department", "police staffing",
+        "Southern Station", "foot patrol", "foot beat",
+        "open-air drug", "drug market", "drug dealing", "drug sobering",
+        "encampment resolution", "street conditions", "public nuisance",
+        "Police Commission", "law enforcement"
+      ]
+    },
+    {
+      "id": "reset",
+      "label": "RESET center",
+      "trigger": true,
+      "weight": 6,
+      "terms": [
+        "RESET", "RESET Center"
+      ]
+    },
+    {
+      "id": "agencies",
+      "label": "HSH / DPH / MOHCD",
+      "trigger": true,
+      "weight": 5,
+      "terms": [
+        "HSH", "Homelessness and Supportive Housing",
+        "DPH", "Department of Public Health", "Behavioral Health",
+        "MOHCD", "Mayor's Office of Housing", "Office of Housing and Community Development",
+        "Human Services Agency"
+      ]
+    },
+    {
+      "id": "orgs",
+      "label": "Service-provider organizations",
+      "trigger": true,
+      "weight": 5,
+      "terms": [
+        "TODCO", "TNDC", "Tenderloin Neighborhood Development",
+        "Felton", "Hospitality House", "Salvation Army",
+        "Episcopal Community Services", "Five Keys", "Urban Alchemy",
+        "HealthRIGHT", "Mercy Housing", "Community Housing Partnership",
+        "Dolores Street", "Catholic Charities", "Larkin Street",
+        "Swords to Plowshares", "SOMA RISE", "Transgender District",
+        "Homeless Children's Network"
+      ]
+    },
+    {
+      "id": "swna_topics",
+      "label": "SWNA active topics",
+      "trigger": true,
+      "weight": 4,
+      "terms": [
+        "SB 79", "Good Neighbor", "Tree Equity", "concentration of supportive",
+        "affirmatively furthering fair housing", "AFFH", "fair housing"
+      ]
+    },
+    {
+      "id": "contract_terms",
+      "label": "Contract / grant action",
+      "trigger": false,
+      "weight": 2,
+      "terms": [
+        "grant agreement", "professional services", "competitive bidding",
+        "sole source", "not to exceed", "retroactive", "contract amendment",
+        "contract renewal", "modification of contract",
+        "expenditure plan", "funding reallocation", "accept and expend"
+      ]
+    }
+  ]
+}
