@@ -192,23 +192,41 @@ LEG_RE = re.compile(r'(LegislationDetail\.aspx\?ID=\d+[^"]*)"')
 FILE_RE = re.compile(r'>\s*(\d{6})\s*<')  # SF file numbers look like 260450
 
 
+CELL_RE = re.compile(r"<td[^>]*>(.*?)</td>", re.S)
+
+
 def parse_agenda_items(page):
-    """Return [{file, title, url}] for every agenda item on a MeetingDetail page."""
+    """Return one dict per agenda item with its columns split into clean fields.
+
+    The MeetingDetail grid columns are:
+      0 File#  1 Version  2 (agenda#)  3 Name  4 Type  5 Status  6 Full title ...
+    'name' is the short headline; 'full' is the long legislative text. 'title'
+    combines name+full and is what keyword matching runs against.
+    """
     items = []
     for row in ITEM_ROW_RE.findall(page):
-        leg = LEG_RE.search(row)
-        text = strip_tags(row)
-        if not text:
+        cells = CELL_RE.findall(row)
+        if len(cells) < 7:
             continue
-        file_m = FILE_RE.search(row)
-        fileno = file_m.group(1) if file_m else ""
-        # The stripped row text starts with "<file> <version> ..."; drop that
-        # leading bookkeeping so the displayed title reads cleanly.
-        if fileno:
-            text = re.sub(r"^" + re.escape(fileno) + r"\s+\d+\s+", "", text)
+
+        def cell(i):
+            return strip_tags(cells[i]) if i < len(cells) else ""
+
+        fileno = cell(0)
+        if not re.fullmatch(r"\d{4,7}", fileno):
+            fileno = ""
+        name = cell(3)
+        full = cell(6)
+        if not (name or full):
+            continue
+        leg = LEG_RE.search(row)
         items.append({
             "file": fileno,
-            "title": text,
+            "name": name,
+            "type": cell(4),
+            "status": cell(5),
+            "full": full,
+            "title": (name + " " + full).strip(),  # combined text for matching
             "url": (BASE + html.unescape(leg.group(1))) if leg else "",
         })
     return items
@@ -326,13 +344,27 @@ def render_html(report, today):
     def esc(s):
         return html.escape(s or "")
 
-    def highlight(text, matches):
+    def highlight(text, matches, limit=None):
+        if limit and len(text) > limit:
+            text = text[:limit].rsplit(" ", 1)[0].rstrip(" ,;:-") + "…"
         out = esc(text)
-        for _, term in sorted({m for m in matches}, key=lambda t: -len(t[1])):
+        for term in sorted({t for _, t in matches}, key=len, reverse=True):
             esc_term = re.escape(term).replace(r"\ ", r"\\s+")
             out = re.sub(r"(?<!\w)(" + esc_term + r")(?!\w)",
                          r"<mark>\1</mark>", out, flags=re.I)
         return out
+
+    def type_class(t):
+        t = (t or "").lower()
+        if "ordinance" in t:
+            return "t-ord"
+        if "resolution" in t:
+            return "t-res"
+        if "motion" in t:
+            return "t-mot"
+        if "hearing" in t:
+            return "t-hear"
+        return "t-other"
 
     cards = []
     for r in flagged_meetings:
@@ -341,25 +373,40 @@ def render_html(report, today):
         for it in r["hits"]:
             cats = sorted({lbl for lbl, _ in it["matches"]})
             tags = "".join(f'<span class="tag">{esc(c)}</span>' for c in cats)
-            title = highlight(it["title"], it["matches"])
-            fileno = f'<span class="file">File {esc(it["file"])}</span>' if it["file"] else ""
-            link = (f'<a href="{esc(it["url"])}" target="_blank" rel="noopener">'
-                    f'open&nbsp;item&nbsp;&raquo;</a>') if it["url"] else ""
+            headline = highlight(it["name"] or it["full"], it["matches"])
+            desc = ""
+            if it["full"] and it["full"] != it["name"]:
+                desc = f'<p class="hit-desc">{highlight(it["full"], it["matches"], 260)}</p>'
+            badge = (f'<span class="badge {type_class(it["type"])}">{esc(it["type"])}</span>'
+                     if it["type"] else "")
+            bits = []
+            if it["file"]:
+                bits.append(f'<span class="file">File&nbsp;{esc(it["file"])}</span>')
+            if it["status"]:
+                bits.append(f'<span>{esc(it["status"])}</span>')
+            if it["url"]:
+                bits.append(f'<a href="{esc(it["url"])}" target="_blank" '
+                            f'rel="noopener">details&nbsp;&rarr;</a>')
+            meta = ' <span class="dot">&middot;</span> '.join(bits)
             rows.append(f'''<li class="hit">
-              <div class="hit-head">{fileno} {tags}</div>
-              <div class="hit-title">{title}</div>
-              <div class="hit-link">{link}</div>
+              <div class="hit-tags">{badge}{tags}</div>
+              <h3 class="hit-title">{headline}</h3>
+              {desc}
+              <div class="hit-meta">{meta}</div>
             </li>''')
         agenda_link = (f'<a href="{esc(m["agenda_url"])}" target="_blank" '
-                       f'rel="noopener">full agenda (PDF)</a>') if m["agenda_url"] else ""
+                       f'rel="noopener">agenda&nbsp;PDF</a>') if m["agenda_url"] else ""
+        n = len(r["hits"])
         cards.append(f'''<section class="card">
           <div class="card-head">
-            <h2>{esc(m["body"])}</h2>
-            <div class="meta">{nice_date(m["date"])} &middot; {esc(m["time"])}
-              &middot; <a href="{esc(m["detail_url"])}" target="_blank" rel="noopener">meeting page</a>
-              {(" &middot; " + agenda_link) if agenda_link else ""}</div>
+            <div>
+              <h2>{esc(m["body"])}</h2>
+              <div class="meta">{nice_date(m["date"])}{(" &middot; " + esc(m["time"])) if m["time"] else ""}
+                &middot; <a href="{esc(m["detail_url"])}" target="_blank" rel="noopener">meeting&nbsp;page</a>
+                {(" &middot; " + agenda_link) if agenda_link else ""}</div>
+            </div>
+            <span class="count">{n} item{"s" if n != 1 else ""}</span>
           </div>
-          <div class="count">{len(r["hits"])} relevant item(s)</div>
           <ul class="hits">{"".join(rows)}</ul>
         </section>''')
 
@@ -367,23 +414,23 @@ def render_html(report, today):
     for r in other_meetings:
         m = r["meeting"]
         if r.get("agenda_posted"):
-            note = f'no matching items ({r.get("item_count", 0)} on agenda)'
+            note = f'no matching items &middot; {r.get("item_count", 0)} on agenda'
         else:
             note = "agenda not posted yet"
         other_rows.append(
-            f'<li><strong>{esc(m["body"])}</strong> &mdash; '
-            f'{short_date(m["date"])} &middot; '
-            f'<a href="{esc(m["detail_url"])}" target="_blank" rel="noopener">meeting page</a> '
-            f'<span class="muted">({note})</span></li>')
+            f'<li><a href="{esc(m["detail_url"])}" target="_blank" rel="noopener">'
+            f'{esc(m["body"])}</a> <span class="muted">&mdash; {short_date(m["date"])} '
+            f'&middot; {note}</span></li>')
 
     cards_html = "".join(cards) if cards else (
-        '<section class="card"><p class="muted">No relevant agenda items found '
-        'in the upcoming meetings whose agendas are posted. Check back after the '
-        'next scan &mdash; agendas are usually posted a few days before each meeting.</p></section>')
+        '<section class="card"><p class="muted">No relevant agenda items found in the '
+        'upcoming meetings whose agendas are posted. Agendas are usually posted a few '
+        'days before each meeting &mdash; check back after the next scan.</p></section>')
 
+    now = datetime.datetime.now()
     return PAGE_TEMPLATE.format(
         generated=nice_date(today),
-        generated_dt=datetime.datetime.now().strftime("%Y-%m-%d %H:%M"),
+        generated_dt=f"{nice_date(now.date())} at {now:%I:%M %p}".replace(" 0", " "),
         total_hits=total_hits,
         flagged_count=len(flagged_meetings),
         meeting_count=len(report),
@@ -397,75 +444,131 @@ PAGE_TEMPLATE = """<!DOCTYPE html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SOMA West &middot; SF Board &amp; Committee Agenda Monitor</title>
+<title>SOMA West &middot; SF Agenda Monitor</title>
 <style>
-  :root {{ --ink:#1a1a2e; --muted:#6b7280; --line:#e5e7eb; --bg:#f7f7fb;
-           --accent:#3b5bdb; --mark:#fff3bf; --card:#ffffff; }}
+  :root {{
+    --ink:#16161d; --soft:#55566b; --muted:#85869a; --line:#ececf3;
+    --bg:#f4f4f8; --card:#ffffff; --accent:#4c5fd5; --accent-dark:#3a2e8f;
+    --mark:#ffe98a; --chip:#eef0fe; --chip-ink:#3f4bc4;
+  }}
   * {{ box-sizing:border-box; }}
-  body {{ margin:0; font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
-          color:var(--ink); background:var(--bg); line-height:1.5; }}
-  header.top {{ background:linear-gradient(135deg,#3b5bdb,#5f3dc4); color:#fff;
-                padding:28px 20px; }}
-  header.top .wrap {{ max-width:920px; margin:0 auto; }}
-  header.top h1 {{ margin:0 0 4px; font-size:1.5rem; }}
-  header.top p {{ margin:0; opacity:.9; font-size:.95rem; }}
-  .wrap {{ max-width:920px; margin:0 auto; padding:0 20px; }}
-  .summary {{ display:flex; gap:18px; flex-wrap:wrap; margin:20px auto; }}
-  .stat {{ background:var(--card); border:1px solid var(--line); border-radius:12px;
-           padding:14px 18px; flex:1; min-width:140px; }}
-  .stat .n {{ font-size:1.8rem; font-weight:700; color:var(--accent); }}
-  .stat .l {{ font-size:.8rem; color:var(--muted); text-transform:uppercase;
-              letter-spacing:.04em; }}
-  .card {{ background:var(--card); border:1px solid var(--line); border-radius:14px;
-           padding:20px; margin:16px auto; box-shadow:0 1px 3px rgba(0,0,0,.04); }}
-  .card-head h2 {{ margin:0 0 4px; font-size:1.15rem; }}
-  .meta {{ font-size:.85rem; color:var(--muted); }}
-  .meta a {{ color:var(--accent); text-decoration:none; }}
-  .count {{ display:inline-block; margin:10px 0; font-size:.78rem; font-weight:600;
-            color:#fff; background:var(--accent); padding:2px 10px; border-radius:20px; }}
+  html {{ scroll-behavior:smooth; }}
+  body {{ margin:0; color:var(--ink); background:var(--bg); line-height:1.55;
+    font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased; }}
+  a {{ color:var(--accent); }}
+  .wrap {{ max-width:860px; margin:0 auto; padding:0 22px; }}
+
+  header.top {{ background:linear-gradient(135deg,#4c5fd5 0%,#6b3fc4 60%,#7c3aab 100%);
+    color:#fff; padding:40px 22px 30px; }}
+  header.top .wrap {{ padding:0; }}
+  .brand {{ font-size:.75rem; letter-spacing:.14em; text-transform:uppercase;
+    opacity:.85; font-weight:600; margin-bottom:8px; }}
+  header.top h1 {{ margin:0 0 10px; font-size:1.75rem; line-height:1.2; font-weight:700; }}
+  header.top .lede {{ margin:0; opacity:.92; font-size:1rem; max-width:60ch; }}
+  .updated {{ margin-top:16px; font-size:.82rem; opacity:.85;
+    display:inline-flex; align-items:center; gap:7px; }}
+  .updated .dotlive {{ width:8px; height:8px; border-radius:50%; background:#7ef0b0;
+    box-shadow:0 0 0 3px rgba(126,240,176,.25); }}
+
+  .summary {{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin:-22px auto 26px; }}
+  .stat {{ background:var(--card); border:1px solid var(--line); border-radius:16px;
+    padding:18px; box-shadow:0 6px 20px rgba(30,30,60,.06); text-align:center; }}
+  .stat .n {{ font-size:2rem; font-weight:700; color:var(--accent); line-height:1; }}
+  .stat .l {{ font-size:.72rem; color:var(--muted); text-transform:uppercase;
+    letter-spacing:.06em; margin-top:7px; font-weight:600; }}
+
+  h2.section {{ font-size:.8rem; letter-spacing:.08em; text-transform:uppercase;
+    color:var(--muted); margin:30px 0 4px; font-weight:700; }}
+
+  .card {{ background:var(--card); border:1px solid var(--line); border-radius:18px;
+    padding:6px 24px 22px; margin:16px auto; box-shadow:0 4px 18px rgba(30,30,60,.05);
+    overflow:hidden; }}
+  .card-head {{ display:flex; justify-content:space-between; align-items:flex-start;
+    gap:14px; padding:18px 0 4px; border-bottom:1px solid var(--line);
+    margin:0 -24px 6px; padding-left:24px; padding-right:24px; }}
+  .card-head h2 {{ margin:0 0 3px; font-size:1.2rem; font-weight:700; }}
+  .meta {{ font-size:.84rem; color:var(--soft); }}
+  .meta a {{ text-decoration:none; }}
+  .meta a:hover {{ text-decoration:underline; }}
+  .count {{ flex:none; font-size:.74rem; font-weight:700; color:#fff;
+    background:var(--accent); padding:5px 12px; border-radius:30px; white-space:nowrap; }}
+
   ul.hits {{ list-style:none; margin:0; padding:0; }}
-  li.hit {{ border-top:1px solid var(--line); padding:12px 0; }}
-  .hit-head {{ margin-bottom:4px; }}
-  .file {{ font-size:.75rem; color:var(--muted); font-weight:600; margin-right:8px; }}
-  .tag {{ display:inline-block; font-size:.7rem; background:#eef2ff; color:#3b5bdb;
-          border-radius:6px; padding:1px 7px; margin:0 4px 4px 0; }}
-  .hit-title {{ font-size:.95rem; }}
-  .hit-link a {{ font-size:.82rem; color:var(--accent); text-decoration:none; }}
-  mark {{ background:var(--mark); padding:0 2px; border-radius:3px; }}
+  li.hit {{ padding:16px 0; border-bottom:1px solid var(--line); }}
+  li.hit:last-child {{ border-bottom:none; padding-bottom:2px; }}
+  .hit-tags {{ display:flex; flex-wrap:wrap; gap:6px; margin-bottom:8px; align-items:center; }}
+  .badge {{ font-size:.66rem; font-weight:700; text-transform:uppercase; letter-spacing:.05em;
+    padding:3px 9px; border-radius:6px; }}
+  .t-ord {{ background:#e7ecff; color:#33409e; }}
+  .t-res {{ background:#e3f6ec; color:#1f7a4d; }}
+  .t-mot {{ background:#f3e9ff; color:#6b3fae; }}
+  .t-hear {{ background:#fff0e0; color:#b9651b; }}
+  .t-other {{ background:#eef0f3; color:#5a6072; }}
+  .tag {{ font-size:.7rem; background:var(--chip); color:var(--chip-ink);
+    border-radius:30px; padding:3px 10px; font-weight:600; }}
+  .hit-title {{ font-size:1.02rem; font-weight:650; margin:0 0 5px; line-height:1.4; }}
+  .hit-desc {{ font-size:.9rem; color:var(--soft); margin:0 0 9px; }}
+  .hit-meta {{ font-size:.8rem; color:var(--muted); display:flex; flex-wrap:wrap;
+    gap:8px; align-items:center; }}
+  .hit-meta .file {{ font-weight:700; color:var(--soft); }}
+  .hit-meta a {{ text-decoration:none; font-weight:600; }}
+  .hit-meta a:hover {{ text-decoration:underline; }}
+  .hit-meta .dot {{ color:var(--line); }}
+  mark {{ background:var(--mark); padding:0 3px; border-radius:3px; font-weight:inherit; }}
+
   .muted {{ color:var(--muted); }}
-  .other {{ background:var(--card); border:1px solid var(--line); border-radius:14px;
-            padding:20px; margin:16px auto; }}
-  .other h3 {{ margin:0 0 10px; font-size:1rem; }}
-  .other ul {{ margin:0; padding-left:18px; }}
-  .other li {{ font-size:.88rem; margin:5px 0; }}
-  footer {{ max-width:920px; margin:24px auto 50px; padding:0 20px;
-            font-size:.8rem; color:var(--muted); }}
+  .other {{ background:var(--card); border:1px solid var(--line); border-radius:18px;
+    padding:20px 24px; margin:16px auto 0; box-shadow:0 4px 18px rgba(30,30,60,.05); }}
+  .other ul {{ margin:0; padding:0; list-style:none; }}
+  .other li {{ font-size:.88rem; margin:9px 0; padding-left:16px; position:relative; }}
+  .other li::before {{ content:"›"; position:absolute; left:0; color:var(--muted); }}
+  .other a {{ text-decoration:none; font-weight:600; }}
+
+  footer {{ max-width:860px; margin:30px auto 56px; padding:18px 22px 0;
+    font-size:.8rem; color:var(--muted); border-top:1px solid var(--line); }}
   footer a {{ color:var(--accent); }}
+
+  @media (max-width:560px) {{
+    header.top {{ padding:30px 18px 26px; }}
+    header.top h1 {{ font-size:1.45rem; }}
+    .summary {{ grid-template-columns:1fr 1fr 1fr; gap:8px; }}
+    .stat {{ padding:12px 6px; }}
+    .stat .n {{ font-size:1.5rem; }}
+    .stat .l {{ font-size:.6rem; }}
+    .card {{ padding:6px 16px 16px; }}
+    .card-head {{ flex-direction:column; margin:0 -16px 6px; padding-left:16px; padding-right:16px; }}
+  }}
 </style>
 </head>
 <body>
 <header class="top"><div class="wrap">
+  <div class="brand">SOMA West Neighborhood Association</div>
   <h1>SF Board &amp; Committee Agenda Monitor</h1>
-  <p>SOMA West Neighborhood Association &middot; updated {generated}</p>
+  <p class="lede">Upcoming San Francisco Board of Supervisors and committee agenda items
+    relevant to SOMA West &mdash; homelessness, public safety, nonprofit contracts under
+    HSH&nbsp;/&nbsp;DPH&nbsp;/&nbsp;MOHCD, and the RESET center.</p>
+  <div class="updated"><span class="dotlive"></span> Updated {generated_dt}</div>
 </div></header>
 <div class="wrap">
   <div class="summary">
-    <div class="stat"><div class="n">{total_hits}</div><div class="l">relevant items</div></div>
-    <div class="stat"><div class="n">{flagged_count}</div><div class="l">meetings flagged</div></div>
-    <div class="stat"><div class="n">{meeting_count}</div><div class="l">upcoming meetings scanned</div></div>
+    <div class="stat"><div class="n">{total_hits}</div><div class="l">Relevant items</div></div>
+    <div class="stat"><div class="n">{flagged_count}</div><div class="l">Meetings flagged</div></div>
+    <div class="stat"><div class="n">{meeting_count}</div><div class="l">Meetings scanned</div></div>
   </div>
+  <h2 class="section">Flagged meetings</h2>
   {cards}
   <div class="other">
-    <h3>Other upcoming meetings (no flagged items)</h3>
+    <h2 class="section" style="margin-top:0">Other upcoming meetings</h2>
     <ul>{other_list}</ul>
   </div>
 </div>
 <footer>
   <p>Automatically generated from the
-  <a href="https://sfgov.legistar.com/Calendar.aspx" target="_blank" rel="noopener">SF Legistar calendar</a>
-  on {generated_dt}. Items are flagged by keyword (see keywords list) and may include
-  false positives &mdash; always confirm against the official agenda. This is a volunteer
-  neighborhood tool, not an official City source.</p>
+  <a href="https://sfgov.legistar.com/Calendar.aspx" target="_blank" rel="noopener">SF Legistar calendar</a>,
+  twice a week. Items are flagged by keyword and may include occasional false positives &mdash;
+  always confirm against the official agenda before acting. This is a volunteer neighborhood
+  tool, not an official City of San Francisco source.</p>
 </footer>
 </body>
 </html>"""
@@ -507,7 +610,7 @@ def main():
         "flagged": [
             {"body": r["meeting"]["body"],
              "date": f'{r["meeting"]["date"]:%Y-%m-%d}',
-             "items": [{"file": h["file"], "title": h["title"][:160],
+             "items": [{"file": h["file"], "title": (h["name"] or h["full"])[:160],
                         "url": h["url"]} for h in r["hits"]]}
             for r in report if r["hits"]
         ],
