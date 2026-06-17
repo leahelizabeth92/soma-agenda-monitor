@@ -210,7 +210,13 @@ def parse_agenda_items(page):
             continue
 
         def cell(i):
-            return strip_tags(cells[i]) if i < len(cells) else ""
+            if i >= len(cells):
+                return ""
+            t = strip_tags(cells[i])
+            # "Not available" is Legistar's placeholder for empty action/result/
+            # video columns; strip it so it never leaks into a title or headline.
+            t = re.sub(r"(?:\s*Not available)+\s*$", "", t).strip()
+            return "" if t == "Not available" else t
 
         fileno = cell(0)
         if not re.fullmatch(r"\d{4,7}", fileno):
@@ -336,10 +342,21 @@ def build_report(today):
 # ---------------------------------------------------------------------------
 # Step 5: render the web page
 # ---------------------------------------------------------------------------
-def render_html(report, today):
+def render_html(report, today, prev_files=None):
+    prev_files = prev_files or set()
     total_hits = sum(len(r["hits"]) for r in report)
     flagged_meetings = [r for r in report if r["hits"]]
     other_meetings = [r for r in report if not r["hits"]]
+    # An item is "new" if its file number wasn't flagged in the previous scan.
+    # (Only mark when we actually have a prior scan to compare against.)
+    new_count = 0
+    if prev_files:
+        seen = set()
+        for r in flagged_meetings:
+            for it in r["hits"]:
+                if it["file"] and it["file"] not in prev_files and it["file"] not in seen:
+                    seen.add(it["file"])
+                    new_count += 1
 
     def esc(s):
         return html.escape(s or "")
@@ -377,8 +394,11 @@ def render_html(report, today):
             desc = ""
             if it["full"] and it["full"] != it["name"]:
                 desc = f'<p class="hit-desc">{highlight(it["full"], it["matches"], 260)}</p>'
-            badge = (f'<span class="badge {type_class(it["type"])}">{esc(it["type"])}</span>'
-                     if it["type"] else "")
+            is_new = bool(prev_files) and it["file"] and it["file"] not in prev_files
+            new_badge = '<span class="badge t-new">★ New</span>' if is_new else ""
+            badge = new_badge + (
+                f'<span class="badge {type_class(it["type"])}">{esc(it["type"])}</span>'
+                if it["type"] else "")
             bits = []
             if it["file"]:
                 bits.append(f'<span class="file">File&nbsp;{esc(it["file"])}</span>')
@@ -388,7 +408,7 @@ def render_html(report, today):
                 bits.append(f'<a href="{esc(it["url"])}" target="_blank" '
                             f'rel="noopener">details&nbsp;&rarr;</a>')
             meta = ' <span class="dot">&middot;</span> '.join(bits)
-            rows.append(f'''<li class="hit">
+            rows.append(f'''<li class="hit{" is-new" if is_new else ""}">
               <div class="hit-tags">{badge}{tags}</div>
               <h3 class="hit-title">{headline}</h3>
               {desc}
@@ -427,10 +447,18 @@ def render_html(report, today):
         'upcoming meetings whose agendas are posted. Agendas are usually posted a few '
         'days before each meeting &mdash; check back after the next scan.</p></section>')
 
+    if new_count:
+        s = "s" if new_count != 1 else ""
+        new_banner = (f'<div class="newbanner">★ {new_count} new item{s} '
+                      f'since the last scan &mdash; highlighted below.</div>')
+    else:
+        new_banner = ""
+
     now = datetime.datetime.now()
     return PAGE_TEMPLATE.format(
         generated=nice_date(today),
         generated_dt=f"{nice_date(now.date())} at {now:%I:%M %p}".replace(" 0", " "),
+        new_banner=new_banner,
         total_hits=total_hits,
         flagged_count=len(flagged_meetings),
         meeting_count=len(report),
@@ -480,6 +508,9 @@ PAGE_TEMPLATE = """<!DOCTYPE html>
 
   h2.section {{ font-size:.8rem; letter-spacing:.08em; text-transform:uppercase;
     color:var(--muted); margin:30px 0 4px; font-weight:700; }}
+  .newbanner {{ background:#fff4f4; border:1px solid #ffd5d5; color:#b33049;
+    border-radius:14px; padding:12px 18px; font-size:.9rem; font-weight:600;
+    margin:6px auto 0; }}
 
   .card {{ background:var(--card); border:1px solid var(--line); border-radius:18px;
     padding:6px 24px 22px; margin:16px auto; box-shadow:0 4px 18px rgba(30,30,60,.05);
@@ -505,6 +536,9 @@ PAGE_TEMPLATE = """<!DOCTYPE html>
   .t-mot {{ background:#f3e9ff; color:#6b3fae; }}
   .t-hear {{ background:#fff0e0; color:#b9651b; }}
   .t-other {{ background:#eef0f3; color:#5a6072; }}
+  .t-new {{ background:#ffe2e2; color:#c0344b; }}
+  li.hit.is-new {{ background:linear-gradient(90deg,rgba(255,226,226,.5),transparent 60%);
+    margin:0 -24px; padding-left:24px; padding-right:24px; border-radius:10px; }}
   .tag {{ font-size:.7rem; background:var(--chip); color:var(--chip-ink);
     border-radius:30px; padding:3px 10px; font-weight:600; }}
   .hit-title {{ font-size:1.02rem; font-weight:650; margin:0 0 5px; line-height:1.4; }}
@@ -556,6 +590,7 @@ PAGE_TEMPLATE = """<!DOCTYPE html>
     <div class="stat"><div class="n">{flagged_count}</div><div class="l">Meetings flagged</div></div>
     <div class="stat"><div class="n">{meeting_count}</div><div class="l">Meetings scanned</div></div>
   </div>
+  {new_banner}
   <h2 class="section">Flagged meetings</h2>
   {cards}
   <div class="other">
@@ -584,7 +619,25 @@ def main():
     log(f"Scan starting for {today:%Y-%m-%d}")
 
     report = build_report(today)
-    page = render_html(report, today)
+
+    # Load history first so we can mark items that are new since the last scan.
+    history_path = os.path.join(DATA, "history.json")
+    history = []
+    if os.path.exists(history_path):
+        try:
+            with open(history_path, encoding="utf-8") as f:
+                history = json.load(f)
+        except Exception:
+            history = []
+    today_str = f"{today:%Y-%m-%d}"
+    prev_files = set()
+    for entry in reversed(history):
+        if entry.get("date") != today_str:  # most recent scan from an earlier day
+            prev_files = {it["file"] for m in entry.get("flagged", [])
+                          for it in m["items"] if it.get("file")}
+            break
+
+    page = render_html(report, today, prev_files)
 
     index_path = os.path.join(SITE, "index.html")
     with open(index_path, "w", encoding="utf-8") as f:
@@ -594,14 +647,6 @@ def main():
         f.write(page)
 
     # Append a compact JSON record for history.
-    history_path = os.path.join(DATA, "history.json")
-    history = []
-    if os.path.exists(history_path):
-        try:
-            with open(history_path, encoding="utf-8") as f:
-                history = json.load(f)
-        except Exception:
-            history = []
     history.append({
         "date": f"{today:%Y-%m-%d}",
         "generated": datetime.datetime.now().isoformat(timespec="seconds"),
