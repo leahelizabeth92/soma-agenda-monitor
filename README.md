@@ -34,9 +34,13 @@ python scan_agendas.py
 Then open `docs/index.html` in any browser.
 
 **Automatically (twice a week):** a Windows Scheduled Task named
-**"SOMA West Agenda Monitor"** runs `run.bat` every **Monday and Thursday at
-7:30 AM** (your PC must be on and signed in at that time). To change the
-schedule, open **Task Scheduler**, find that task, and edit its trigger.
+**"SOMA West Agenda Monitor"** runs the scanner every **Monday and Thursday at
+7:30 AM**. For reliability the task launches `pythonw.exe scan_agendas.py`
+directly (a windowless Python process, so Windows can't console-kill it mid-run),
+and the script publishes to GitHub itself when it finishes. The task is set to
+**wake the PC from sleep** to run, and to **catch up** the next time the PC is on
+if it was fully shut down. To change the schedule, open **Task Scheduler**, find
+that task, and edit its trigger.
 
 ---
 
@@ -58,10 +62,10 @@ next scan.
 
 ## Publishing the website (so others can see it)
 
-The site is generated into the `docs/` folder. To put it online at a shareable
-link, this repo is set up to publish via **GitHub Pages**: once a GitHub remote
-named `origin` is configured, `run.bat` automatically commits and pushes the
-updated `docs/` folder after every scan, and GitHub serves it at a public URL.
+The site is generated into the `docs/` folder and published via **GitHub Pages**
+at https://leahelizabeth92.github.io/soma-agenda-monitor/ . After every scan the
+script automatically commits and pushes the updated `docs/` folder to the
+`origin` remote, and GitHub serves it at that public URL.
 
 See `SETUP-PUBLISHING.md` for the one-time setup steps.
 
