@@ -725,5 +725,132 @@
         ]
       }
     ]
+  },
+  {
+    "date": "2026-06-21",
+    "generated": "2026-06-21T21:54:45",
+    "meetings_scanned": 4,
+    "relevant_items": 19,
+    "flagged": [
+      {
+        "body": "Budget and Appropriations Committee",
+        "date": "2026-06-22",
+        "items": [
+          {
+            "file": "260611",
+            "title": "Homelessness and Supportive Housing Fund - FYs 2026-2027 and 2027-2028 Expenditure Plan",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8060312&GUID=5904D4A1-3ADC-49DC-9EE6-669D9BB726F0&Options=&Search="
+          },
+          {
+            "file": "260612",
+            "title": "Proposition J Contract Certification Contracted-Out Department Services Previously Approved",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8060313&GUID=3D4892A1-5E1C-435F-888B-E0789D937503&Options=&Search="
+          },
+          {
+            "file": "260610",
+            "title": "Accept and Expend Grants - Recurring State Grant Funds - Department of Public Health - FY2026-2027",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8060311&GUID=49E22B1C-53A0-47E5-819A-61809C1BA17A&Options=&Search="
+          },
+          {
+            "file": "260601",
+            "title": "Funding Reallocation - Our City, Our Home Fund - Homelessness Gross Receipts Tax - Services to Address Homelessness",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8060303&GUID=F1328FB1-5A73-4AF4-AA89-E2554A66C57F&Options=&Search="
+          },
+          {
+            "file": "260600",
+            "title": "Health Code - Patient Rates for Fiscal Years 2026-2027 and 2027-2028",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8060302&GUID=8FD1A01B-E2B3-4E63-86E7-E15B0DD9703D&Options=&Search="
+          },
+          {
+            "file": "260613",
+            "title": "Proposition J Contract Certification Contracted-Out Department Services Not Previously Approved",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8060314&GUID=D83A3D43-142F-4203-B23A-30D5C0A96663&Options=&Search="
+          }
+        ]
+      },
+      {
+        "body": "Rules Committee",
+        "date": "2026-06-22",
+        "items": [
+          {
+            "file": "260687",
+            "title": "Behested Payment Waiver - Temporary Shelter and Homeless Services",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8069923&GUID=C55D5926-B4C2-4A76-801C-F3340FA5360B&Options=&Search="
+          }
+        ]
+      },
+      {
+        "body": "Budget and Appropriations Committee",
+        "date": "2026-06-24",
+        "items": [
+          {
+            "file": "260611",
+            "title": "Homelessness and Supportive Housing Fund - FYs 2026-2027 and 2027-2028 Expenditure Plan",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8060312&GUID=5904D4A1-3ADC-49DC-9EE6-669D9BB726F0&Options=&Search="
+          },
+          {
+            "file": "260612",
+            "title": "Proposition J Contract Certification Contracted-Out Department Services Previously Approved",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8060313&GUID=3D4892A1-5E1C-435F-888B-E0789D937503&Options=&Search="
+          },
+          {
+            "file": "260610",
+            "title": "Accept and Expend Grants - Recurring State Grant Funds - Department of Public Health - FY2026-2027",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8060311&GUID=49E22B1C-53A0-47E5-819A-61809C1BA17A&Options=&Search="
+          },
+          {
+            "file": "260601",
+            "title": "Funding Reallocation - Our City, Our Home Fund - Homelessness Gross Receipts Tax - Services to Address Homelessness",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8060303&GUID=F1328FB1-5A73-4AF4-AA89-E2554A66C57F&Options=&Search="
+          },
+          {
+            "file": "260600",
+            "title": "Health Code - Patient Rates for Fiscal Years 2026-2027 and 2027-2028",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8060302&GUID=8FD1A01B-E2B3-4E63-86E7-E15B0DD9703D&Options=&Search="
+          },
+          {
+            "file": "260613",
+            "title": "Proposition J Contract Certification Contracted-Out Department Services Not Previously Approved",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8060314&GUID=D83A3D43-142F-4203-B23A-30D5C0A96663&Options=&Search="
+          }
+        ]
+      },
+      {
+        "body": "Budget and Appropriations Committee",
+        "date": "2026-06-25",
+        "items": [
+          {
+            "file": "260611",
+            "title": "Homelessness and Supportive Housing Fund - FYs 2026-2027 and 2027-2028 Expenditure Plan",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8060312&GUID=5904D4A1-3ADC-49DC-9EE6-669D9BB726F0&Options=&Search="
+          },
+          {
+            "file": "260612",
+            "title": "Proposition J Contract Certification Contracted-Out Department Services Previously Approved",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8060313&GUID=3D4892A1-5E1C-435F-888B-E0789D937503&Options=&Search="
+          },
+          {
+            "file": "260610",
+            "title": "Accept and Expend Grants - Recurring State Grant Funds - Department of Public Health - FY2026-2027",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8060311&GUID=49E22B1C-53A0-47E5-819A-61809C1BA17A&Options=&Search="
+          },
+          {
+            "file": "260601",
+            "title": "Funding Reallocation - Our City, Our Home Fund - Homelessness Gross Receipts Tax - Services to Address Homelessness",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8060303&GUID=F1328FB1-5A73-4AF4-AA89-E2554A66C57F&Options=&Search="
+          },
+          {
+            "file": "260600",
+            "title": "Health Code - Patient Rates for Fiscal Years 2026-2027 and 2027-2028",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8060302&GUID=8FD1A01B-E2B3-4E63-86E7-E15B0DD9703D&Options=&Search="
+          },
+          {
+            "file": "260613",
+            "title": "Proposition J Contract Certification Contracted-Out Department Services Not Previously Approved",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8060314&GUID=D83A3D43-142F-4203-B23A-30D5C0A96663&Options=&Search="
+          }
+        ]
+      }
+    ]
   }
 ]

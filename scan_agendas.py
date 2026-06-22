@@ -24,6 +24,7 @@ import re
 import sys
 import html
 import datetime
+import subprocess
 import urllib.request
 import urllib.error
 
@@ -47,8 +48,19 @@ USER_AGENT = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
 # ---------------------------------------------------------------------------
 # Small helpers
 # ---------------------------------------------------------------------------
+LOGFILE = os.path.join(HERE, "run.log")
+GIT_EXE = r"C:\Program Files\Git\cmd\git.exe"
+
+
 def log(msg):
-    print(f"[{datetime.datetime.now():%H:%M:%S}] {msg}", flush=True)
+    line = f"[{datetime.datetime.now():%H:%M:%S}] {msg}"
+    print(line, flush=True)
+    # Also append to a file so runs launched windowless (no console) are logged.
+    try:
+        with open(LOGFILE, "a", encoding="utf-8") as f:
+            f.write(line + "\n")
+    except Exception:
+        pass
 
 
 def http_get(url, retries=3):
@@ -666,7 +678,38 @@ def main():
     total = sum(len(r["hits"]) for r in report)
     log(f"Done. {total} relevant item(s) across {len(report)} meetings.")
     log(f"Wrote {index_path}")
+
+    publish_to_git()
     return 0
+
+
+def publish_to_git():
+    """Commit the refreshed site and push it to GitHub, if a remote is set up.
+
+    Done in-process (rather than in run.bat) so the scan + publish run as a
+    single windowless pythonw process the scheduler can't console-kill.
+    """
+    git = GIT_EXE if os.path.exists(GIT_EXE) else "git"
+
+    def run(args):
+        return subprocess.run([git] + args, cwd=HERE,
+                              capture_output=True, text=True)
+
+    try:
+        if run(["remote", "get-url", "origin"]).returncode != 0:
+            log("No GitHub remote configured; site saved locally only.")
+            return
+        run(["add", "-A"])
+        run(["commit", "-m", f"Agenda scan {datetime.date.today():%Y-%m-%d}"])
+        push = run(["push"])
+        if push.returncode == 0:
+            log("Published updated site to GitHub.")
+        else:
+            log(f"git push failed: {(push.stderr or push.stdout).strip()[:200]}")
+    except FileNotFoundError:
+        log("git not found; could not publish (site saved locally).")
+    except Exception as e:
+        log(f"publish error: {e}")
 
 
 if __name__ == "__main__":
