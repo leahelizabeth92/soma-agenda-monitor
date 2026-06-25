@@ -684,28 +684,53 @@ def main():
 
 
 def publish_to_git():
-    """Commit the refreshed site and push it to GitHub, if a remote is set up.
+    """Commit the refreshed site and push it to GitHub.
 
     Done in-process (rather than in run.bat) so the scan + publish run as a
     single windowless pythonw process the scheduler can't console-kill.
-    """
-    git = GIT_EXE if os.path.exists(GIT_EXE) else "git"
 
-    def run(args):
-        return subprocess.run([git] + args, cwd=HERE,
-                              capture_output=True, text=True)
+    Hardened for the scheduled-task context: every git call forces
+    `safe.directory` (so git's "dubious ownership" check can't refuse the repo
+    when the task runs under a different security token) and sets HOME, and the
+    push is retried in case the network is still coming up right after a
+    wake-from-sleep. Real errors are logged instead of being swallowed.
+    """
+    import time
+    git = GIT_EXE if os.path.exists(GIT_EXE) else "git"
+    repo = HERE.replace(os.sep, "/")
+    base = [git, "-c", f"safe.directory={repo}", "-c", "safe.directory=*"]
+    env = os.environ.copy()
+    if not env.get("HOME"):
+        env["HOME"] = env.get("USERPROFILE", "")
+
+    def run(args, retries=1, wait=5):
+        last = None
+        for attempt in range(retries):
+            last = subprocess.run(base + args, cwd=HERE, env=env,
+                                  capture_output=True, text=True)
+            if last.returncode == 0:
+                return last
+            if attempt + 1 < retries:
+                time.sleep(wait)
+        return last
 
     try:
-        if run(["remote", "get-url", "origin"]).returncode != 0:
-            log("No GitHub remote configured; site saved locally only.")
+        chk = run(["remote", "get-url", "origin"])
+        if chk.returncode != 0:
+            log(f"Publish skipped: can't read 'origin' remote "
+                f"-- {(chk.stderr or chk.stdout).strip()[:160]!r}")
             return
         run(["add", "-A"])
-        run(["commit", "-m", f"Agenda scan {datetime.date.today():%Y-%m-%d}"])
-        push = run(["push"])
+        commit = run(["commit", "-m", f"Agenda scan {datetime.date.today():%Y-%m-%d}"])
+        blob = (commit.stdout + commit.stderr).lower()
+        if commit.returncode != 0 and "nothing to commit" in blob:
+            log("No site changes since last scan; nothing to publish.")
+            return
+        push = run(["push"], retries=3, wait=8)
         if push.returncode == 0:
             log("Published updated site to GitHub.")
         else:
-            log(f"git push failed: {(push.stderr or push.stdout).strip()[:200]}")
+            log(f"git push failed -- {(push.stderr or push.stdout).strip()[:200]!r}")
     except FileNotFoundError:
         log("git not found; could not publish (site saved locally).")
     except Exception as e:
