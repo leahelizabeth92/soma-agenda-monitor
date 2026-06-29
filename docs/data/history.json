@@ -1194,5 +1194,60 @@
         ]
       }
     ]
+  },
+  {
+    "date": "2026-06-29",
+    "generated": "2026-06-29T08:15:49",
+    "meetings_scanned": 4,
+    "relevant_items": 7,
+    "flagged": [
+      {
+        "body": "Land Use and Transportation Committee",
+        "date": "2026-06-29",
+        "items": [
+          {
+            "file": "260572",
+            "title": "Planning Code - Landmark Designation - Charles Katz Home",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8046273&GUID=0A57C146-0828-445C-9010-C7067D5BA649&Options=&Search="
+          },
+          {
+            "file": "260583",
+            "title": "Planning Code - Landmark Designation - Mission Congregational Church",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8046564&GUID=7F411D11-A237-4493-A6C8-624A69B1E8E6&Options=&Search="
+          },
+          {
+            "file": "260588",
+            "title": "Planning Code - Landmark Designation - Second Church of Christ Scientist",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8046648&GUID=DDD42C8B-0F70-43F7-93CD-DA4365F2E34E&Options=&Search="
+          }
+        ]
+      },
+      {
+        "body": "Board of Supervisors",
+        "date": "2026-06-30",
+        "items": [
+          {
+            "file": "250720",
+            "title": "Administrative Code - Domestic Violence Shelter-Based Program Fund",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=7455036&GUID=9BF2A7AA-CA69-47ED-BA26-9BC942F7BA66&Options=&Search="
+          },
+          {
+            "file": "260751",
+            "title": "Petitions and Communications",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8119788&GUID=769803A5-32A1-4596-B3E6-4EE0D987286F&Options=&Search="
+          },
+          {
+            "file": "260746",
+            "title": "Committee of the Whole - Hearing - Kaiser Permanente and the National Union of Healthcare Workers - Collective Bargaining and Behavioral Healthcare Practices - ",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8121055&GUID=8560E8D9-7FE6-4FE2-8ECE-35216A7B41BB&Options=&Search="
+          },
+          {
+            "file": "260626",
+            "title": "Law Enforcement Equipment Use Policy - 2025 Annual Report",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8060326&GUID=0C95A0AB-08B7-40BE-960A-DD7189A83224&Options=&Search="
+          }
+        ]
+      }
+    ]
   }
 ]
