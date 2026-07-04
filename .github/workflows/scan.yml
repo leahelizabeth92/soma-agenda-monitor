@@ -1,0 +1,45 @@
+name: Scan SF agendas
+
+# Runs the agenda scanner in the cloud (no dependency on anyone's laptop) and
+# publishes the refreshed site to the docs/ folder that GitHub Pages serves.
+
+on:
+  schedule:
+    # 15:00 UTC = ~7-8 AM Pacific (shifts one hour with daylight saving),
+    # on Mondays and Thursdays.
+    - cron: '0 15 * * 1,4'
+  workflow_dispatch:   # lets you run it on demand from the Actions tab
+
+permissions:
+  contents: write      # allow the job to commit the updated site back to the repo
+
+concurrency:
+  group: agenda-scan
+  cancel-in-progress: false
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Run the agenda scan
+        run: python scan_agendas.py
+
+      - name: Commit and publish the updated site
+        run: |
+          git config user.name "soma-agenda-bot"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --staged --quiet; then
+            echo "No changes to publish."
+          else
+            git commit -m "Agenda scan $(date -u +%Y-%m-%d)"
+            git push
+          fi

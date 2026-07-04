@@ -695,6 +695,11 @@ def publish_to_git():
     push is retried in case the network is still coming up right after a
     wake-from-sleep. Real errors are logged instead of being swallowed.
     """
+    if os.environ.get("GITHUB_ACTIONS"):
+        # Running in the cloud (GitHub Actions) -- the workflow commits & pushes
+        # the refreshed site itself, so the script shouldn't also try to push.
+        log("Running in GitHub Actions; the workflow will publish the site.")
+        return
     import time
     git = GIT_EXE if os.path.exists(GIT_EXE) else "git"
     repo = HERE.replace(os.sep, "/")
