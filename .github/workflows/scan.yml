@@ -13,6 +13,9 @@ on:
 permissions:
   contents: write      # allow the job to commit the updated site back to the repo
 
+env:
+  TZ: America/Los_Angeles   # so the site's "Updated ..." time shows Pacific, not UTC
+
 concurrency:
   group: agenda-scan
   cancel-in-progress: false
