@@ -1249,5 +1249,97 @@
         ]
       }
     ]
+  },
+  {
+    "date": "2026-07-02",
+    "generated": "2026-07-02T10:04:25",
+    "meetings_scanned": 5,
+    "relevant_items": 4,
+    "flagged": [
+      {
+        "body": "Board of Supervisors",
+        "date": "2026-07-07",
+        "items": [
+          {
+            "file": "260776",
+            "title": "Supporting California State Assembly Bill No. 1573 (Bryan) - The Unseen and Unheard Housing Act",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8125328&GUID=B7097982-2F93-44A2-81F3-07D1DC8FF631&Options=&Search="
+          }
+        ]
+      },
+      {
+        "body": "Budget and Finance Committee",
+        "date": "2026-07-08",
+        "items": [
+          {
+            "file": "260647",
+            "title": "Accept and Expend Gift - The Chris Larsen Fund - Silicon Valley Community Foundation through Five Keys - Project Restore: Women\u2019s Housing for Victims of Crime -",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8060347&GUID=FB769412-A75F-40AD-BC46-5210E18D56A8&Options=&Search="
+          },
+          {
+            "file": "260736",
+            "title": "Accept and Expend In-Kind Gift - Retroactive - Biobot Analytics - Wastewater-Based Epidemiology Services - $87,000",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8121045&GUID=E9EC0329-7988-412B-9EC5-92CA940AB244&Options=&Search="
+          }
+        ]
+      },
+      {
+        "body": "Public Safety and Neighborhood Services Committee",
+        "date": "2026-07-09",
+        "items": [
+          {
+            "file": "251003",
+            "title": "Administrative Code - Expanding Drug-Free Permanent Supportive Housing",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=7697870&GUID=CF754DBB-74C6-477D-9597-02DA184BC72E&Options=&Search="
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-07-04",
+    "generated": "2026-07-04T09:47:08",
+    "meetings_scanned": 4,
+    "relevant_items": 4,
+    "flagged": [
+      {
+        "body": "Board of Supervisors",
+        "date": "2026-07-07",
+        "items": [
+          {
+            "file": "260776",
+            "title": "Supporting California State Assembly Bill No. 1573 (Bryan) - The Unseen and Unheard Housing Act",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8125328&GUID=B7097982-2F93-44A2-81F3-07D1DC8FF631&Options=&Search="
+          }
+        ]
+      },
+      {
+        "body": "Budget and Finance Committee",
+        "date": "2026-07-08",
+        "items": [
+          {
+            "file": "260647",
+            "title": "Accept and Expend Gift - The Chris Larsen Fund - Silicon Valley Community Foundation through Five Keys - Project Restore: Women\u2019s Housing for Victims of Crime -",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8060347&GUID=FB769412-A75F-40AD-BC46-5210E18D56A8&Options=&Search="
+          },
+          {
+            "file": "260736",
+            "title": "Accept and Expend In-Kind Gift - Retroactive - Biobot Analytics - Wastewater-Based Epidemiology Services - $87,000",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8121045&GUID=E9EC0329-7988-412B-9EC5-92CA940AB244&Options=&Search="
+          }
+        ]
+      },
+      {
+        "body": "Public Safety and Neighborhood Services Committee",
+        "date": "2026-07-09",
+        "items": [
+          {
+            "file": "251003",
+            "title": "Administrative Code - Expanding Drug-Free Permanent Supportive Housing",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=7697870&GUID=CF754DBB-74C6-477D-9597-02DA184BC72E&Options=&Search="
+          }
+        ]
+      }
+    ]
   }
 ]

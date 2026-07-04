@@ -717,8 +717,18 @@ def publish_to_git():
     try:
         chk = run(["remote", "get-url", "origin"])
         if chk.returncode != 0:
-            log(f"Publish skipped: can't read 'origin' remote "
-                f"-- {(chk.stderr or chk.stdout).strip()[:160]!r}")
+            # Rich diagnostics: an empty error + nonzero code usually means
+            # git.exe couldn't start (environment/PATH), not a repo problem.
+            ver = subprocess.run([git, "--version"], cwd=HERE, env=env,
+                                 capture_output=True, text=True)
+            log(f"Publish diag: git={git!r} exists={os.path.exists(git)} "
+                f"cwd={HERE!r} rc={chk.returncode} "
+                f"err={(chk.stderr or chk.stdout).strip()[:120]!r}")
+            log(f"Publish diag: 'git --version' rc={ver.returncode} "
+                f"out={(ver.stdout or ver.stderr).strip()[:80]!r} "
+                f"PATH_has_System32={'System32' in env.get('PATH','')} "
+                f"PATH_has_Git={'Git' in env.get('PATH','')}")
+            log("Publish skipped: could not read 'origin' remote (see diag above).")
             return
         run(["add", "-A"])
         commit = run(["commit", "-m", f"Agenda scan {datetime.date.today():%Y-%m-%d}"])
