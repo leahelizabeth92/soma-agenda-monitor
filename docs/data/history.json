@@ -1433,5 +1433,24 @@
         ]
       }
     ]
+  },
+  {
+    "date": "2026-07-09",
+    "generated": "2026-07-09T13:59:09",
+    "meetings_scanned": 2,
+    "relevant_items": 1,
+    "flagged": [
+      {
+        "body": "Public Safety and Neighborhood Services Committee",
+        "date": "2026-07-09",
+        "items": [
+          {
+            "file": "251003",
+            "title": "Administrative Code - Expanding Drug-Free Permanent Supportive Housing",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=7697870&GUID=CF754DBB-74C6-477D-9597-02DA184BC72E&Options=&Search="
+          }
+        ]
+      }
+    ]
   }
 ]
