@@ -1452,5 +1452,111 @@
         ]
       }
     ]
+  },
+  {
+    "date": "2026-07-13",
+    "generated": "2026-07-13T13:02:10",
+    "meetings_scanned": 5,
+    "relevant_items": 16,
+    "flagged": [
+      {
+        "body": "Board of Supervisors",
+        "date": "2026-07-14",
+        "items": [
+          {
+            "file": "260647",
+            "title": "Accept and Expend Gift - The Chris Larsen Fund - Silicon Valley Community Foundation through Five Keys - Project Restore: Women\u2019s Housing for Victims of Crime -",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8060347&GUID=FB769412-A75F-40AD-BC46-5210E18D56A8&Options=&Search="
+          },
+          {
+            "file": "260611",
+            "title": "Homelessness and Supportive Housing Fund - FYs 2026-2027 and 2027-2028 Expenditure Plan",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8060312&GUID=5904D4A1-3ADC-49DC-9EE6-669D9BB726F0&Options=&Search="
+          },
+          {
+            "file": "260612",
+            "title": "Proposition J Contract Certification Contracted-Out Department Services Previously Approved",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8060313&GUID=3D4892A1-5E1C-435F-888B-E0789D937503&Options=&Search="
+          },
+          {
+            "file": "251003",
+            "title": "Administrative Code - Expanding Drug-Free Permanent Supportive Housing",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=7697870&GUID=CF754DBB-74C6-477D-9597-02DA184BC72E&Options=&Search="
+          },
+          {
+            "file": "260736",
+            "title": "Accept and Expend In-Kind Gift - Retroactive - Biobot Analytics - Wastewater-Based Epidemiology Services - $87,000",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8121045&GUID=E9EC0329-7988-412B-9EC5-92CA940AB244&Options=&Search="
+          },
+          {
+            "file": "260610",
+            "title": "Accept and Expend Grants - Recurring State Grant Funds - Department of Public Health - FY2026-2027",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8060311&GUID=49E22B1C-53A0-47E5-819A-61809C1BA17A&Options=&Search="
+          },
+          {
+            "file": "260601",
+            "title": "Funding Reallocation - Our City, Our Home Fund - Homelessness Gross Receipts Tax - Services to Address Homelessness",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8060303&GUID=F1328FB1-5A73-4AF4-AA89-E2554A66C57F&Options=&Search="
+          },
+          {
+            "file": "260600",
+            "title": "Health Code - Patient Rates for Fiscal Years 2026-2027 and 2027-2028",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8060302&GUID=8FD1A01B-E2B3-4E63-86E7-E15B0DD9703D&Options=&Search="
+          },
+          {
+            "file": "260613",
+            "title": "Proposition J Contract Certification Contracted-Out Department Services Not Previously Approved",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8060314&GUID=D83A3D43-142F-4203-B23A-30D5C0A96663&Options=&Search="
+          }
+        ]
+      },
+      {
+        "body": "Budget and Finance Committee",
+        "date": "2026-07-15",
+        "items": [
+          {
+            "file": "260764",
+            "title": "Hearing - Release of Reserved Funds - Department of Homelessness and Supportive Housing - Community Ambassador Services - $4,431,400",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8123173&GUID=074323C8-A23E-4EA9-8B45-F89D7B5A0F84&Options=&Search="
+          },
+          {
+            "file": "260734",
+            "title": "Accept and Expend In-Kind Gift - Consulting Services - FUSE Corp - FUSE Fellows Program - Valued at $2,520,000",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8121043&GUID=45FB93F6-A773-45F5-A935-1AC0BB3D9234&Options=&Search="
+          },
+          {
+            "file": "260773",
+            "title": "Amended Loan Agreement - 1234 Great Highway LLC - 1234, 1270, and 1280 Great Highway - 100% Affordable Housing - Not to Exceed $27,248,500",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8127459&GUID=AE8D7CB0-1086-4C6F-A77D-9F9D91D23B90&Options=&Search="
+          },
+          {
+            "file": "260774",
+            "title": "Ground Lease - Mercy Housing California 109, L.P. - 1939 Market Street - 100% Affordable Housing - $15,000 Annual Base Rent",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8127460&GUID=5BE52301-42E3-4493-B554-051229A6B14E&Options=&Search="
+          },
+          {
+            "file": "260672",
+            "title": "Real Property Lease - W.Y.L. Orion Properties, LLC - 125 Bayshore Boulevard - $655,200 Initial Annual Base Rent",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8063774&GUID=813DB990-B9AC-4458-A027-9B1F66330BD6&Options=&Search="
+          },
+          {
+            "file": "260677",
+            "title": "Hearing - Release of Reserved Funds - Department of Homelessness and Supportive Housing - Community Ambassador Services - $2,430,466",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8064902&GUID=71C6EA16-E39E-41C2-B0EF-46DCE1807F7C&Options=&Search="
+          }
+        ]
+      },
+      {
+        "body": "Government Audit and Oversight Committee",
+        "date": "2026-07-16",
+        "items": [
+          {
+            "file": "260701",
+            "title": "Settlement of Unlitigated Claims - TIH Insurance Holdings, LLC - $609,369.91",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8072282&GUID=4E657330-4CEC-4F59-8179-F8A23A5B8EE3&Options=&Search="
+          }
+        ]
+      }
+    ]
   }
 ]
