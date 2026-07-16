@@ -1558,5 +1558,24 @@
         ]
       }
     ]
+  },
+  {
+    "date": "2026-07-16",
+    "generated": "2026-07-16T11:47:43",
+    "meetings_scanned": 1,
+    "relevant_items": 1,
+    "flagged": [
+      {
+        "body": "Government Audit and Oversight Committee",
+        "date": "2026-07-16",
+        "items": [
+          {
+            "file": "260701",
+            "title": "Settlement of Unlitigated Claims - TIH Insurance Holdings, LLC - $609,369.91",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8072282&GUID=4E657330-4CEC-4F59-8179-F8A23A5B8EE3&Options=&Search="
+          }
+        ]
+      }
+    ]
   }
 ]
