@@ -1577,5 +1577,182 @@
         ]
       }
     ]
+  },
+  {
+    "date": "2026-07-20",
+    "generated": "2026-07-20T09:20:56",
+    "meetings_scanned": 5,
+    "relevant_items": 29,
+    "flagged": [
+      {
+        "body": "Land Use and Transportation Committee",
+        "date": "2026-07-20",
+        "items": [
+          {
+            "file": "260572",
+            "title": "Planning Code - Landmark Designation - Charles Katz Home",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8046273&GUID=0A57C146-0828-445C-9010-C7067D5BA649&Options=&Search="
+          },
+          {
+            "file": "260583",
+            "title": "Planning Code - Landmark Designation - Mission Congregational Church",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8046564&GUID=7F411D11-A237-4493-A6C8-624A69B1E8E6&Options=&Search="
+          },
+          {
+            "file": "260588",
+            "title": "Planning Code - Landmark Designation - Second Church of Christ Scientist",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8046648&GUID=DDD42C8B-0F70-43F7-93CD-DA4365F2E34E&Options=&Search="
+          }
+        ]
+      },
+      {
+        "body": "Board of Supervisors",
+        "date": "2026-07-21",
+        "items": [
+          {
+            "file": "260611",
+            "title": "Homelessness and Supportive Housing Fund - FYs 2026-2027 and 2027-2028 Expenditure Plan",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8060312&GUID=5904D4A1-3ADC-49DC-9EE6-669D9BB726F0&Options=&Search="
+          },
+          {
+            "file": "260734",
+            "title": "Accept and Expend In-Kind Gift - Consulting Services - FUSE Corp - FUSE Fellows Program - Valued at $2,520,000",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8121043&GUID=45FB93F6-A773-45F5-A935-1AC0BB3D9234&Options=&Search="
+          },
+          {
+            "file": "260773",
+            "title": "Amended Loan Agreement - 1234 Great Highway LLC - 1234, 1270, and 1280 Great Highway - 100% Affordable Housing - Not to Exceed $27,248,500",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8127459&GUID=AE8D7CB0-1086-4C6F-A77D-9F9D91D23B90&Options=&Search="
+          },
+          {
+            "file": "260774",
+            "title": "Ground Lease - Mercy Housing California 109, L.P. - 1939 Market Street - 100% Affordable Housing - $15,000 Annual Base Rent",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8127460&GUID=5BE52301-42E3-4493-B554-051229A6B14E&Options=&Search="
+          },
+          {
+            "file": "260612",
+            "title": "Proposition J Contract Certification Contracted-Out Department Services Previously Approved",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8060313&GUID=3D4892A1-5E1C-435F-888B-E0789D937503&Options=&Search="
+          },
+          {
+            "file": "251003",
+            "title": "Administrative Code - Expanding Drug-Free Permanent Supportive Housing",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=7697870&GUID=CF754DBB-74C6-477D-9597-02DA184BC72E&Options=&Search="
+          },
+          {
+            "file": "260672",
+            "title": "Real Property Lease - W.Y.L. Orion Properties, LLC - 125 Bayshore Boulevard - $655,200 Initial Annual Base Rent",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8063774&GUID=813DB990-B9AC-4458-A027-9B1F66330BD6&Options=&Search="
+          },
+          {
+            "file": "260811",
+            "title": "Real Property Lease Amendment - Opera Plaza, L.P. - Administrative Offices - 601 Van Ness Avenue - $345,840.00 Annual Base Rent",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8135195&GUID=408A9F99-85ED-4ABE-A449-90ED2FDB1C4B&Options=&Search="
+          },
+          {
+            "file": "260610",
+            "title": "Accept and Expend Grants - Recurring State Grant Funds - Department of Public Health - FY2026-2027",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8060311&GUID=49E22B1C-53A0-47E5-819A-61809C1BA17A&Options=&Search="
+          },
+          {
+            "file": "260601",
+            "title": "Funding Reallocation - Our City, Our Home Fund - Homelessness Gross Receipts Tax - Services to Address Homelessness",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8060303&GUID=F1328FB1-5A73-4AF4-AA89-E2554A66C57F&Options=&Search="
+          },
+          {
+            "file": "260600",
+            "title": "Health Code - Patient Rates for Fiscal Years 2026-2027 and 2027-2028",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8060302&GUID=8FD1A01B-E2B3-4E63-86E7-E15B0DD9703D&Options=&Search="
+          },
+          {
+            "file": "260613",
+            "title": "Proposition J Contract Certification Contracted-Out Department Services Not Previously Approved",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8060314&GUID=D83A3D43-142F-4203-B23A-30D5C0A96663&Options=&Search="
+          },
+          {
+            "file": "260657",
+            "title": "Hearing - Appeal of Determination of Exemption from Environmental Review - Proposed 1200 Larkin Street Project",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8064859&GUID=C8B37D6B-4591-4483-8BB1-A98BD64D0AF9&Options=&Search="
+          },
+          {
+            "file": "260747",
+            "title": "Hearing - Committee of the Whole - Kaiser Permanente and the National Union of Healthcare Workers - Collective Bargaining and Behavioral Healthcare Practices - ",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8121056&GUID=480876CC-AF45-48FF-B023-D398BD78F9AF&Options=&Search="
+          }
+        ]
+      },
+      {
+        "body": "Budget and Finance Committee",
+        "date": "2026-07-22",
+        "items": [
+          {
+            "file": "260793",
+            "title": "Acquisition of Real Property - $2,178,786 - Amended Loan - NTE $13,666,153 - Residential Ground Lease - ABR $100 - New Asia Housing, L.P. - Commercial Ground Le",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8132896&GUID=261966F5-1AB9-4653-A821-1720995E39A5&Options=&Search="
+          },
+          {
+            "file": "260738",
+            "title": "Accept and Expend Grant - Retroactive - State of California - Essential Access Health - Comprehensive Sexual and Reproductive Health Program - $250,000",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8121047&GUID=4FC64E01-C74F-405C-9DBD-5FA7B217D634&Options=&Search="
+          },
+          {
+            "file": "260737",
+            "title": "Accept and Expend Grant Increase - Retroactive - Centers for Disease Control and Prevention - Strengthening STD Prevention and Control for Health Departments (S",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8121046&GUID=27F6BE4B-5804-49A9-BA09-0D4189AB411F&Options=&Search="
+          },
+          {
+            "file": "260713",
+            "title": "Accept and Expend Gift - Retroactive - Epic Systems Corporation - 2025 UGM Safety Net Grant - $12,710.44",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8116806&GUID=953840CC-5F1D-4E12-907C-8E9C40F32E26&Options=&Search="
+          },
+          {
+            "file": "260714",
+            "title": "Accept and Expend Gift - Retroactive - Epic Systems Corporation - 2025 Safety Net Gift - $115,000",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8116807&GUID=ABE4B7EC-6571-4FA3-B207-D385F6FEEF82&Options=&Search="
+          },
+          {
+            "file": "260735",
+            "title": "Accept and Expend Gift - Retroactive - Epic Systems Corporation - Help Low Income and At-Risk Populations - 2025 Unrestricted Gift - $37,500",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8121044&GUID=373A55C7-7F87-454C-965D-C0C8C3EE8F59&Options=&Search="
+          },
+          {
+            "file": "260795",
+            "title": "Lease Agreement - Retroactive - 3rd Street Youth Center and Clinic - 888 Post Street - $1 Annual Base Rent",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8132898&GUID=D6EB436C-BFF5-4322-803C-9F89230A62FF&Options=&Search="
+          },
+          {
+            "file": "260794",
+            "title": "Rent Forgiveness, Month-to-Month Rent Reduction - Shew Yick Trust One, Robert Yick Exempt Assets Trust, Hon So, Inc., Hon Keung So, and Candy Mei-Yiu So - New A",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8132897&GUID=DB438AB5-A73A-4898-BA28-5D3ECCFF40D0&Options=&Search="
+          },
+          {
+            "file": "260495",
+            "title": "Police Code - Prohibiting the Retail Sale of Nitrous Oxide",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8008862&GUID=86396431-E9E2-42DA-9C6C-6A390EE58CB4&Options=&Search="
+          }
+        ]
+      },
+      {
+        "body": "Public Safety and Neighborhood Services Committee",
+        "date": "2026-07-23",
+        "items": [
+          {
+            "file": "260434",
+            "title": "Hearing - Status of the Vicious and Dangerous Dog Unit",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=7992689&GUID=ABE81E06-D572-4870-96D8-5709CB2A841F&Options=&Search="
+          },
+          {
+            "file": "260621",
+            "title": "Liquor License Transfer - 456-460 Larkin Street - Reggie and Maude\u2019s",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8056087&GUID=D547D8BE-ECE0-48B7-8603-756578BAB5F9&Options=&Search="
+          },
+          {
+            "file": "260697",
+            "title": "Liquor License Issuance - 835 Larkin Street - Tenderloin Museum",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8068748&GUID=62210351-3A6C-4EB5-9714-5A6461CFB80A&Options=&Search="
+          }
+        ]
+      }
+    ]
   }
 ]
