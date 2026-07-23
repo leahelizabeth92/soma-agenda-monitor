@@ -1754,5 +1754,34 @@
         ]
       }
     ]
+  },
+  {
+    "date": "2026-07-23",
+    "generated": "2026-07-23T09:22:07",
+    "meetings_scanned": 1,
+    "relevant_items": 3,
+    "flagged": [
+      {
+        "body": "Public Safety and Neighborhood Services Committee",
+        "date": "2026-07-23",
+        "items": [
+          {
+            "file": "260434",
+            "title": "Hearing - Status of the Vicious and Dangerous Dog Unit",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=7992689&GUID=ABE81E06-D572-4870-96D8-5709CB2A841F&Options=&Search="
+          },
+          {
+            "file": "260621",
+            "title": "Liquor License Transfer - 456-460 Larkin Street - Reggie and Maude\u2019s",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8056087&GUID=D547D8BE-ECE0-48B7-8603-756578BAB5F9&Options=&Search="
+          },
+          {
+            "file": "260697",
+            "title": "Liquor License Issuance - 835 Larkin Street - Tenderloin Museum",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8068748&GUID=62210351-3A6C-4EB5-9714-5A6461CFB80A&Options=&Search="
+          }
+        ]
+      }
+    ]
   }
 ]
