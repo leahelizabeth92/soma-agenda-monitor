@@ -23,6 +23,7 @@ concurrency:
 jobs:
   scan:
     runs-on: ubuntu-latest
+    timeout-minutes: 20   # backstop: never let a hung run drag on like the Aug 6 one
     steps:
       - name: Check out the repository
         uses: actions/checkout@v4
@@ -32,8 +33,19 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Run the agenda scan
-        run: python scan_agendas.py
+      - name: Run the agenda scan (retry on transient network hangs)
+        run: |
+          for attempt in 1 2 3; do
+            echo "Scan attempt $attempt..."
+            if timeout 300 python scan_agendas.py; then
+              echo "Scan succeeded on attempt $attempt."
+              exit 0
+            fi
+            echo "Attempt $attempt failed or timed out; waiting 30s before retry."
+            sleep 30
+          done
+          echo "All scan attempts failed."
+          exit 1
 
       - name: Commit and publish the updated site
         run: |

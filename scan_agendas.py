@@ -454,10 +454,23 @@ def render_html(report, today, prev_files=None):
             f'{esc(m["body"])}</a> <span class="muted">&mdash; {short_date(m["date"])} '
             f'&middot; {note}</span></li>')
 
-    cards_html = "".join(cards) if cards else (
-        '<section class="card"><p class="muted">No relevant agenda items found in the '
-        'upcoming meetings whose agendas are posted. Agendas are usually posted a few '
-        'days before each meeting &mdash; check back after the next scan.</p></section>')
+    if cards:
+        cards_html = "".join(cards)
+    elif not report:
+        # No meetings on the calendar at all -- typically a Board recess, or
+        # agendas for the next session simply aren't posted yet.
+        cards_html = (
+            '<section class="card"><h2 style="margin:14px 0 6px">No upcoming meetings '
+            'right now</h2><p class="muted" style="margin:0">The Board of Supervisors '
+            'and its committees have no meetings currently on the calendar &mdash; this '
+            'is normal during a recess or between sessions. Agendas are usually posted a '
+            'few days before each meeting, and this page updates automatically twice a '
+            'week, so new items will appear here as soon as they are scheduled.</p></section>')
+    else:
+        cards_html = (
+            '<section class="card"><p class="muted">Meetings are scheduled, but none of '
+            'the posted agenda items match the SOMA West topics yet. Agendas fill in over '
+            'the days before each meeting &mdash; check back after the next scan.</p></section>')
 
     if new_count:
         s = "s" if new_count != 1 else ""
