@@ -1943,5 +1943,121 @@
     "meetings_scanned": 0,
     "relevant_items": 0,
     "flagged": []
+  },
+  {
+    "date": "2026-08-31",
+    "generated": "2026-08-31T13:34:05",
+    "meetings_scanned": 3,
+    "relevant_items": 18,
+    "flagged": [
+      {
+        "body": "Board of Supervisors",
+        "date": "2026-09-01",
+        "items": [
+          {
+            "file": "260947",
+            "title": "Real Property Lease Amendment - Retroactive - Mattison Family Trust - 555 Polk Street - $202,500 Annual Base Rent With 3% Annual Increases",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8190357&GUID=FF59F2AB-C082-44A5-B855-050F29254944&Options=&Search="
+          },
+          {
+            "file": "260572",
+            "title": "Planning Code - Landmark Designation - Charles Katz Home",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8046273&GUID=0A57C146-0828-445C-9010-C7067D5BA649&Options=&Search="
+          },
+          {
+            "file": "260583",
+            "title": "Planning Code - Landmark Designation - Mission Congregational Church",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8046564&GUID=7F411D11-A237-4493-A6C8-624A69B1E8E6&Options=&Search="
+          },
+          {
+            "file": "260588",
+            "title": "Planning Code - Landmark Designation - Second Church of Christ Scientist",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8046648&GUID=DDD42C8B-0F70-43F7-93CD-DA4365F2E34E&Options=&Search="
+          },
+          {
+            "file": "260887",
+            "title": "Urging Kaiser Permanente to Drop \u201cTerrible Three\u201d Contract Demands",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8156765&GUID=B762735C-DF94-4728-AF32-88ECB3C3C54C&Options=&Search="
+          },
+          {
+            "file": "260955",
+            "title": "Transfer of the Fillmore Heritage Center Commercial Parcel, Garage Parcel, and Ellis Driveway - Office of Community Investment and Infrastructure - Mayor's Offi",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8191035&GUID=C0256F47-06EF-4B93-BE50-BA71EE1763FF&Options=&Search="
+          }
+        ]
+      },
+      {
+        "body": "Budget and Finance Committee",
+        "date": "2026-09-02",
+        "items": [
+          {
+            "file": "260712",
+            "title": "Accept and Expend Grant - Retroactive - National Institutes of Health - Heluna Health - PrEP Blueprint: Evaluating implementation of a PrEP Choice Blueprint on ",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8116805&GUID=58D7BCE0-C956-4B29-81A4-AC38064CE6BA&Options=&Search="
+          },
+          {
+            "file": "260878",
+            "title": "Accept and Expend Grant - Retroactive - San Francisco Health Plan - San Francisco Health Plan Community Health Assessment/Community Health Improvement Plan Gran",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8156784&GUID=A7D0871B-D6E7-48A1-8421-A6E2C4EB4127&Options=&Search="
+          },
+          {
+            "file": "260844",
+            "title": "Accept and Expand Grant - Retroactive - San Francisco General Hospital Foundation - Solid Start - $2,307,936.20",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8145032&GUID=6DDFBB7E-EF18-49D2-8688-8C27E390FC3F&Options=&Search="
+          },
+          {
+            "file": "260839",
+            "title": "Grant Agreement - Retroactive - 160 Freelon Housing Partners, LP - Affordable Housing Opportunity Fund and Program - Not to Exceed $2,559,101",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8145027&GUID=FBED032A-6EBC-4569-824C-B7322F9ADEF6&Options=&Search="
+          },
+          {
+            "file": "260840",
+            "title": "Grant Agreement - Retroactive - 3300 Mission Partners, LP - Affordable Housing Opportunity Fund and Program - Not to Exceed $4,445,777",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8145028&GUID=E550740F-8D43-41A7-B7A6-F0C1B6B00773&Options=&Search="
+          },
+          {
+            "file": "260841",
+            "title": "Grant Agreement - Retroactive - Ambassador Nine Percent, LP - Affordable Housing Opportunity Fund and Program - Not to Exceed $4,493,845",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8145029&GUID=1BE442FA-77CC-467B-ABE5-C3DA72A8D52E&Options=&Search="
+          },
+          {
+            "file": "260842",
+            "title": "Grant Agreement - Retroactive - 1166 Howard Street Associates, LP - Affordable Housing Opportunity Fund and Program - Not to Exceed $3,239,075",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8145030&GUID=B1095175-DD2A-45C3-BF8B-C8C3BDB32568&Options=&Search="
+          },
+          {
+            "file": "260843",
+            "title": "Grant Agreement - Retroactive - MHDC South Park Properties, LP - Affordable Housing Opportunity Fund and Program - Amount Not to Exceed $3,798,723",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8145031&GUID=09A87FAE-4C2C-478D-8266-B73C62428070&Options=&Search="
+          },
+          {
+            "file": "260870",
+            "title": "Appropriation - General Obligation Bond Proceeds - $202,004,550 - MOHCD - Affordable Housing Series 2026D, Affordable Housing Series 2026E, Preservation and Sei",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8156755&GUID=E75E8664-0E16-4315-8A16-34779CAAD789&Options=&Search="
+          },
+          {
+            "file": "260871",
+            "title": "De-Appropriation - DPH - General Obligation Bond Proceeds - 2020 Health and Recovery, Series 2025G - $43,505,000 - Appropriation - DPH and REC - General Obligat",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8156756&GUID=B04A35A9-62F5-4D95-8515-7B557A61ABC2&Options=&Search="
+          },
+          {
+            "file": "260495",
+            "title": "Police Code - Prohibiting the Retail Sale of Nitrous Oxide",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8008862&GUID=86396431-E9E2-42DA-9C6C-6A390EE58CB4&Options=&Search="
+          }
+        ]
+      },
+      {
+        "body": "Government Audit and Oversight Committee",
+        "date": "2026-09-03",
+        "items": [
+          {
+            "file": "260801",
+            "title": "Hearing - Preparing for Fleet Week 2026",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8132904&GUID=75ABF53F-B5A2-4A68-B269-45E974DD1BB3&Options=&Search="
+          }
+        ]
+      }
+    ]
   }
 ]
