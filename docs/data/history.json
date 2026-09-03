@@ -2059,5 +2059,24 @@
         ]
       }
     ]
+  },
+  {
+    "date": "2026-09-03",
+    "generated": "2026-09-03T11:16:42",
+    "meetings_scanned": 1,
+    "relevant_items": 1,
+    "flagged": [
+      {
+        "body": "Government Audit and Oversight Committee",
+        "date": "2026-09-03",
+        "items": [
+          {
+            "file": "260801",
+            "title": "Hearing - Preparing for Fleet Week 2026",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8132904&GUID=75ABF53F-B5A2-4A68-B269-45E974DD1BB3&Options=&Search="
+          }
+        ]
+      }
+    ]
   }
 ]
