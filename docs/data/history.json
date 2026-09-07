@@ -2078,5 +2078,24 @@
         ]
       }
     ]
+  },
+  {
+    "date": "2026-09-07",
+    "generated": "2026-09-07T11:56:51",
+    "meetings_scanned": 1,
+    "relevant_items": 1,
+    "flagged": [
+      {
+        "body": "Public Safety and Neighborhood Services Committee",
+        "date": "2026-09-10",
+        "items": [
+          {
+            "file": "260802",
+            "title": "Liquor License Transfer - 700 4th Street - Tazza D' Amore Cafe",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8130087&GUID=C0E75668-C3AA-4108-973F-BF0631D9502F&Options=&Search="
+          }
+        ]
+      }
+    ]
   }
 ]
