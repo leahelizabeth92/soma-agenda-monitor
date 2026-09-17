@@ -2237,5 +2237,40 @@
         ]
       }
     ]
+  },
+  {
+    "date": "2026-09-17",
+    "generated": "2026-09-17T11:43:40",
+    "meetings_scanned": 3,
+    "relevant_items": 3,
+    "flagged": [
+      {
+        "body": "Government Audit and Oversight Committee",
+        "date": "2026-09-17",
+        "items": [
+          {
+            "file": "260729",
+            "title": "Hearing - Civil Grand Jury Report - At Scale, At Risk - Upgrading Data and Oversight to Improve Homelessness Services",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8118883&GUID=B2E3BE93-E795-4A44-98A5-218D2FFFE0F8&Options=&Search="
+          },
+          {
+            "file": "260730",
+            "title": "Board Response - Civil Grand Jury Report - At Scale, At Risk - Upgrading Data and Oversight to Improve Homelessness Services",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8118902&GUID=E895D4E1-EDA7-4A8A-A428-666F4C970D3F&Options=&Search="
+          }
+        ]
+      },
+      {
+        "body": "Rules Committee",
+        "date": "2026-09-21",
+        "items": [
+          {
+            "file": "260869",
+            "title": "Administrative Code - Establishment of Office of Food Security Coordination",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8156754&GUID=3CBB91A8-6AA2-4AE9-B7D5-DAA5EB471B68&Options=&Search="
+          }
+        ]
+      }
+    ]
   }
 ]
