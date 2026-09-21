@@ -2272,5 +2272,127 @@
         ]
       }
     ]
+  },
+  {
+    "date": "2026-09-21",
+    "generated": "2026-09-21T12:49:54",
+    "meetings_scanned": 5,
+    "relevant_items": 18,
+    "flagged": [
+      {
+        "body": "Rules Committee",
+        "date": "2026-09-21",
+        "items": [
+          {
+            "file": "260869",
+            "title": "Administrative Code - Establishment of Office of Food Security Coordination",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8156754&GUID=3CBB91A8-6AA2-4AE9-B7D5-DAA5EB471B68&Options=&Search="
+          }
+        ]
+      },
+      {
+        "body": "Board of Supervisors",
+        "date": "2026-09-22",
+        "items": [
+          {
+            "file": "260877",
+            "title": "Grant Agreement - San Francisco Housing Authority - Emergency Housing Voucher Transition - Not to Exceed $28,750,000",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8156783&GUID=E0512D32-4132-4B95-9E05-ADF90F744279&Options=&Search="
+          },
+          {
+            "file": "261028",
+            "title": "Strengthening Dog Safety Protocols at City-Funded Sites",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8217312&GUID=EE838F7D-0369-42AA-BA3F-539A881E6DF8&Options=&Search="
+          },
+          {
+            "file": "260880",
+            "title": "Grant Agreement - Retroactive - California Department of Health Care Services - BHCIP Round 5 - Anticipated Revenue of $11,199,999.98",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8156758&GUID=C4494816-D89F-41C2-B621-D0CAC68DC5D5&Options=&Search="
+          },
+          {
+            "file": "260870",
+            "title": "Appropriation - General Obligation Bond Proceeds - $202,004,550 - MOHCD - Affordable Housing Series 2026D, Affordable Housing Series 2026E, Preservation and Sei",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8156755&GUID=E75E8664-0E16-4315-8A16-34779CAAD789&Options=&Search="
+          },
+          {
+            "file": "260871",
+            "title": "De-Appropriation - DPH - General Obligation Bond Proceeds - 2020 Health and Recovery, Series 2025G - $43,505,000 - Appropriation - DPH and REC - General Obligat",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8156756&GUID=B04A35A9-62F5-4D95-8515-7B557A61ABC2&Options=&Search="
+          },
+          {
+            "file": "260832",
+            "title": "Real Property Lease Amendment - Townsend Associates, LLC - 650-5th Street, Suites 307-309 - $122,400 Annual Base Rent",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8141520&GUID=C534832F-5720-496A-BFD8-573655E98817&Options=&Search="
+          },
+          {
+            "file": "260802",
+            "title": "Liquor License Transfer - 700 4th Street - Tazza D' Amore Cafe",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8130087&GUID=C0E75668-C3AA-4108-973F-BF0631D9502F&Options=&Search="
+          },
+          {
+            "file": "261029",
+            "title": "Supporting Safe Electric Mobility and Urging Enforcement of Existing Safety Laws for E-Bikes and E-Scooters",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8217313&GUID=1926EA12-8A8D-4389-8FE8-6EC38B77038B&Options=&Search="
+          }
+        ]
+      },
+      {
+        "body": "Budget and Finance Committee",
+        "date": "2026-09-23",
+        "items": [
+          {
+            "file": "260811",
+            "title": "Real Property Lease Amendment - Opera Plaza, L.P. - Administrative Offices - 601 Van Ness Avenue - $345,840.00 Annual Base Rent",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8135195&GUID=408A9F99-85ED-4ABE-A449-90ED2FDB1C4B&Options=&Search="
+          },
+          {
+            "file": "260879",
+            "title": "Accept and Expend In-Kind Gift - Retroactive - Community Initiatives - Food As Medicine Collaborative - $300,000",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8156757&GUID=C7504568-9B15-4761-A5A3-5E0E19B3784B&Options=&Search="
+          },
+          {
+            "file": "260968",
+            "title": "Loan Amendment - 3300 Mission Partners L.P. - 100% Affordable Housing - Not to Exceed $16,083,595",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8201435&GUID=B0B943C9-5256-4FF4-B7FE-C7297C15EF0F&Options=&Search="
+          },
+          {
+            "file": "260847",
+            "title": "Accept and Expend Gift - San Francisco Police Community Foundation - Real Time Investigation Center - $3,000,000",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8145035&GUID=FEDF6F39-3AAD-4B4F-AE67-F0E85320B20B&Options=&Search="
+          },
+          {
+            "file": "260848",
+            "title": "Accept and Expend Gift - Retroactive - China Basin Ballpark Company LLC - Recruitment Testing Event at Oracle Park - $45,500",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8145036&GUID=24A49702-672E-48A3-8BF4-BAAC9E9F5A10&Options=&Search="
+          },
+          {
+            "file": "260849",
+            "title": "Accept and Expend Gift - Retroactive - San Francisco Police Community Foundation - O2X Wellness Initiative - $103,750",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8145037&GUID=D51EE7FE-5B2F-4EEE-80BE-BD3B9A20598B&Options=&Search="
+          },
+          {
+            "file": "260966",
+            "title": "Accept and Expend Grant - Retroactive - Department of California Highway Patrol - FY2026-2027 Cannabis Tax Fund Grant Program - $772,507",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8201433&GUID=8FE3CB88-E5A6-4F33-BFBD-4A9D64CDC611&Options=&Search="
+          }
+        ]
+      },
+      {
+        "body": "Public Safety and Neighborhood Services Committee",
+        "date": "2026-09-24",
+        "items": [
+          {
+            "file": "260912",
+            "title": "Liquor License Transfer - 1360 4th Street - Mission Bay Community Market",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8183318&GUID=9BC8B318-9241-4972-AE00-B18D4262B9BA&Options=&Search="
+          },
+          {
+            "file": "260433",
+            "title": "Hearing - Tree Canopy Equity and Resource Allocation in District 6",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=7992688&GUID=DD0E03D5-F623-42CD-BB76-2457BA87B0AF&Options=&Search="
+          }
+        ]
+      }
+    ]
   }
 ]
