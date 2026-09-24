@@ -2394,5 +2394,29 @@
         ]
       }
     ]
+  },
+  {
+    "date": "2026-09-24",
+    "generated": "2026-09-24T11:46:25",
+    "meetings_scanned": 2,
+    "relevant_items": 2,
+    "flagged": [
+      {
+        "body": "Public Safety and Neighborhood Services Committee",
+        "date": "2026-09-24",
+        "items": [
+          {
+            "file": "260912",
+            "title": "Liquor License Transfer - 1360 4th Street - Mission Bay Community Market",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8183318&GUID=9BC8B318-9241-4972-AE00-B18D4262B9BA&Options=&Search="
+          },
+          {
+            "file": "260433",
+            "title": "Hearing - Tree Canopy Equity and Resource Allocation in District 6",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=7992688&GUID=DD0E03D5-F623-42CD-BB76-2457BA87B0AF&Options=&Search="
+          }
+        ]
+      }
+    ]
   }
 ]
