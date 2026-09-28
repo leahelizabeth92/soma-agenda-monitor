@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SOMA West &middot; SF Agenda Monitor</title>
+<style>
+  :root {
+    --ink:#16161d; --soft:#55566b; --muted:#85869a; --line:#ececf3;
+    --bg:#f4f4f8; --card:#ffffff; --accent:#4c5fd5; --accent-dark:#3a2e8f;
+    --mark:#ffe98a; --chip:#eef0fe; --chip-ink:#3f4bc4;
+  }
+  * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { margin:0; color:var(--ink); background:var(--bg); line-height:1.55;
+    font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased; }
+  a { color:var(--accent); }
+  .wrap { max-width:860px; margin:0 auto; padding:0 22px; }
+
+  header.top { background:linear-gradient(135deg,#4c5fd5 0%,#6b3fc4 60%,#7c3aab 100%);
+    color:#fff; padding:40px 22px 30px; }
+  header.top .wrap { padding:0; }
+  .brand { font-size:.75rem; letter-spacing:.14em; text-transform:uppercase;
+    opacity:.85; font-weight:600; margin-bottom:8px; }
+  header.top h1 { margin:0 0 10px; font-size:1.75rem; line-height:1.2; font-weight:700; }
+  header.top .lede { margin:0; opacity:.92; font-size:1rem; max-width:60ch; }
+  .updated { margin-top:16px; font-size:.82rem; opacity:.85;
+    display:inline-flex; align-items:center; gap:7px; }
+  .updated .dotlive { width:8px; height:8px; border-radius:50%; background:#7ef0b0;
+    box-shadow:0 0 0 3px rgba(126,240,176,.25); }
+
+  .summary { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin:-22px auto 26px; }
+  .stat { background:var(--card); border:1px solid var(--line); border-radius:16px;
+    padding:18px; box-shadow:0 6px 20px rgba(30,30,60,.06); text-align:center; }
+  .stat .n { font-size:2rem; font-weight:700; color:var(--accent); line-height:1; }
+  .stat .l { font-size:.72rem; color:var(--muted); text-transform:uppercase;
+    letter-spacing:.06em; margin-top:7px; font-weight:600; }
+
+  h2.section { font-size:.8rem; letter-spacing:.08em; text-transform:uppercase;
+    color:var(--muted); margin:30px 0 4px; font-weight:700; }
+  .newbanner { background:#fff4f4; border:1px solid #ffd5d5; color:#b33049;
+    border-radius:14px; padding:12px 18px; font-size:.9rem; font-weight:600;
+    margin:6px auto 0; }
+
+  .card { background:var(--card); border:1px solid var(--line); border-radius:18px;
+    padding:6px 24px 22px; margin:16px auto; box-shadow:0 4px 18px rgba(30,30,60,.05);
+    overflow:hidden; }
+  .card-head { display:flex; justify-content:space-between; align-items:flex-start;
+    gap:14px; padding:18px 0 4px; border-bottom:1px solid var(--line);
+    margin:0 -24px 6px; padding-left:24px; padding-right:24px; }
+  .card-head h2 { margin:0 0 3px; font-size:1.2rem; font-weight:700; }
+  .meta { font-size:.84rem; color:var(--soft); }
+  .meta a { text-decoration:none; }
+  .meta a:hover { text-decoration:underline; }
+  .count { flex:none; font-size:.74rem; font-weight:700; color:#fff;
+    background:var(--accent); padding:5px 12px; border-radius:30px; white-space:nowrap; }
+
+  ul.hits { list-style:none; margin:0; padding:0; }
+  li.hit { padding:16px 0; border-bottom:1px solid var(--line); }
+  li.hit:last-child { border-bottom:none; padding-bottom:2px; }
+  .hit-tags { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:8px; align-items:center; }
+  .badge { font-size:.66rem; font-weight:700; text-transform:uppercase; letter-spacing:.05em;
+    padding:3px 9px; border-radius:6px; }
+  .t-ord { background:#e7ecff; color:#33409e; }
+  .t-res { background:#e3f6ec; color:#1f7a4d; }
+  .t-mot { background:#f3e9ff; color:#6b3fae; }
+  .t-hear { background:#fff0e0; color:#b9651b; }
+  .t-other { background:#eef0f3; color:#5a6072; }
+  .t-new { background:#ffe2e2; color:#c0344b; }
+  li.hit.is-new { background:linear-gradient(90deg,rgba(255,226,226,.5),transparent 60%);
+    margin:0 -24px; padding-left:24px; padding-right:24px; border-radius:10px; }
+  .tag { font-size:.7rem; background:var(--chip); color:var(--chip-ink);
+    border-radius:30px; padding:3px 10px; font-weight:600; }
+  .hit-title { font-size:1.02rem; font-weight:650; margin:0 0 5px; line-height:1.4; }
+  .hit-desc { font-size:.9rem; color:var(--soft); margin:0 0 9px; }
+  .hit-meta { font-size:.8rem; color:var(--muted); display:flex; flex-wrap:wrap;
+    gap:8px; align-items:center; }
+  .hit-meta .file { font-weight:700; color:var(--soft); }
+  .hit-meta a { text-decoration:none; font-weight:600; }
+  .hit-meta a:hover { text-decoration:underline; }
+  .hit-meta .dot { color:var(--line); }
+  mark { background:var(--mark); padding:0 3px; border-radius:3px; font-weight:inherit; }
+
+  .muted { color:var(--muted); }
+  .other { background:var(--card); border:1px solid var(--line); border-radius:18px;
+    padding:20px 24px; margin:16px auto 0; box-shadow:0 4px 18px rgba(30,30,60,.05); }
+  .other ul { margin:0; padding:0; list-style:none; }
+  .other li { font-size:.88rem; margin:9px 0; padding-left:16px; position:relative; }
+  .other li::before { content:"›"; position:absolute; left:0; color:var(--muted); }
+  .other a { text-decoration:none; font-weight:600; }
+
+  footer { max-width:860px; margin:30px auto 56px; padding:18px 22px 0;
+    font-size:.8rem; color:var(--muted); border-top:1px solid var(--line); }
+  footer a { color:var(--accent); }
+
+  @media (max-width:560px) {
+    header.top { padding:30px 18px 26px; }
+    header.top h1 { font-size:1.45rem; }
+    .summary { grid-template-columns:1fr 1fr 1fr; gap:8px; }
+    .stat { padding:12px 6px; }
+    .stat .n { font-size:1.5rem; }
+    .stat .l { font-size:.6rem; }
+    .card { padding:6px 16px 16px; }
+    .card-head { flex-direction:column; margin:0 -16px 6px; padding-left:16px; padding-right:16px; }
+  }
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <div class="brand">SOMA West Neighborhood Association</div>
+  <h1>SF Board &amp; Committee Agenda Monitor</h1>
+  <p class="lede">Upcoming San Francisco Board of Supervisors and committee agenda items
+    relevant to SOMA West &mdash; homelessness, public safety, nonprofit contracts under
+    HSH&nbsp;/&nbsp;DPH&nbsp;/&nbsp;MOHCD, and the RESET center.</p>
+  <div class="updated"><span class="dotlive"></span> Updated Monday, September 28, 2026 at 1:59 PM</div>
+</div></header>
+<div class="wrap">
+  <div class="summary">
+    <div class="stat"><div class="n">17</div><div class="l">Relevant items</div></div>
+    <div class="stat"><div class="n">4</div><div class="l">Meetings flagged</div></div>
+    <div class="stat"><div class="n">6</div><div class="l">Meetings scanned</div></div>
+  </div>
+  <div class="newbanner">★ 17 new items since the last scan &mdash; highlighted below.</div>
+  <h2 class="section">Flagged meetings</h2>
+  <section class="card">
+          <div class="card-head">
+            <div>
+              <h2>Land Use and Transportation Committee</h2>
+              <div class="meta">Monday, September 28, 2026 &middot; 1:30 PM
+                &middot; <a href="https://sfgov.legistar.com/MeetingDetail.aspx?ID=1447204&amp;GUID=2CA77F3F-C19F-43D3-BFA5-4E6E69DC18FE&amp;Options=info|&amp;Search=" target="_blank" rel="noopener">meeting&nbsp;page</a>
+                 &middot; <a href="https://sfgov.legistar.com/View.ashx?M=A&amp;ID=1447204&amp;GUID=2CA77F3F-C19F-43D3-BFA5-4E6E69DC18FE" target="_blank" rel="noopener">agenda&nbsp;PDF</a></div>
+            </div>
+            <span class="count">1 item</span>
+          </div>
+          <ul class="hits"><li class="hit is-new">
+              <div class="hit-tags"><span class="badge t-new">★ New</span><span class="badge t-res">Resolution</span><span class="tag">HSH / DPH / MOHCD</span></div>
+              <h3 class="hit-title">Transfer of the Fillmore Heritage Center Commercial Parcel, Garage Parcel, and Ellis Driveway - Office of Community Investment and Infrastructure - Mayor&#x27;s Office of Housing and Community Development</h3>
+              <p class="hit-desc">Resolution approving and authorizing the acceptance of the Fillmore Heritage Center Commercial Parcel, Garage Parcel, and Ellis Driveway from the Office of Community Investment and Infrastructure, serving as the Successor Agency to the Redevelopment Agency of…</p>
+              <div class="hit-meta"><span class="file">File&nbsp;260955</span> <span class="dot">&middot;</span> <span>Scheduled for Committee Hearing</span> <span class="dot">&middot;</span> <a href="https://sfgov.legistar.com/LegislationDetail.aspx?ID=8191035&amp;GUID=C0256F47-06EF-4B93-BE50-BA71EE1763FF&amp;Options=&amp;Search=" target="_blank" rel="noopener">details&nbsp;&rarr;</a></div>
+            </li></ul>
+        </section><section class="card">
+          <div class="card-head">
+            <div>
+              <h2>Board of Supervisors</h2>
+              <div class="meta">Tuesday, September 29, 2026 &middot; 2:00 PM
+                &middot; <a href="https://sfgov.legistar.com/MeetingDetail.aspx?ID=1449004&amp;GUID=82BD7CE6-C773-4BF3-A2FA-3A59A473DBB1&amp;Options=info|&amp;Search=" target="_blank" rel="noopener">meeting&nbsp;page</a>
+                 &middot; <a href="https://sfgov.legistar.com/View.ashx?M=A&amp;ID=1449004&amp;GUID=82BD7CE6-C773-4BF3-A2FA-3A59A473DBB1" target="_blank" rel="noopener">agenda&nbsp;PDF</a></div>
+            </div>
+            <span class="count">11 items</span>
+          </div>
+          <ul class="hits"><li class="hit is-new">
+              <div class="hit-tags"><span class="badge t-new">★ New</span><span class="badge t-res">Resolution</span><span class="tag">Contract / grant action</span><span class="tag">HSH / DPH / MOHCD</span><span class="tag">Homelessness / shelter / supportive housing</span></div>
+              <h3 class="hit-title">Grant Agreement Amendment - Conard House - Allen, Aranda, and McAllister Hotels - Support Services, Property Management and Master Lease Stewardship Not to Exceed $32,803,756</h3>
+              <p class="hit-desc">Resolution approving the second amendment to the grant agreement between the City, acting by and through the Department of <mark>Homelessness</mark> and Supportive Housing (“<mark>HSH</mark>”), and Conard House for support services, property management and master lease stewardship at…</p>
+              <div class="hit-meta"><span class="file">File&nbsp;261043</span> <span class="dot">&middot;</span> <span>Pending Committee Action</span> <span class="dot">&middot;</span> <a href="https://sfgov.legistar.com/LegislationDetail.aspx?ID=8219356&amp;GUID=21C38B47-46C4-4C5C-B683-006B06671973&amp;Options=&amp;Search=" target="_blank" rel="noopener">details&nbsp;&rarr;</a></div>
+            </li><li class="hit is-new">
+              <div class="hit-tags"><span class="badge t-new">★ New</span><span class="badge t-res">Resolution</span><span class="tag">HSH / DPH / MOHCD</span><span class="tag">Homelessness / shelter / supportive housing</span></div>
+              <h3 class="hit-title">Real Property Lease Amendment - Opera Plaza, L.P. - Administrative Offices - 601 Van Ness Avenue - $345,840.00 Annual Base Rent</h3>
+              <p class="hit-desc">Resolution authorizing the Director of Property, on behalf of the Department of <mark>Homelessness</mark> and Supportive Housing, to enter into a Lease Amendment for approximately 8,646 rentable square feet of office space located at 601 Van Ness Avenue, Suite P, with…</p>
+              <div class="hit-meta"><span class="file">File&nbsp;260811</span> <span class="dot">&middot;</span> <span>New Business</span> <span class="dot">&middot;</span> <a href="https://sfgov.legistar.com/LegislationDetail.aspx?ID=8135195&amp;GUID=408A9F99-85ED-4ABE-A449-90ED2FDB1C4B&amp;Options=&amp;Search=" target="_blank" rel="noopener">details&nbsp;&rarr;</a></div>
+            </li><li class="hit is-new">
+              <div class="hit-tags"><span class="badge t-new">★ New</span><span class="badge t-res">Resolution</span><span class="tag">Contract / grant action</span><span class="tag">HSH / DPH / MOHCD</span></div>
+              <h3 class="hit-title">Accept and Expend In-Kind Gift - <mark>Retroactive</mark> - Community Initiatives - Food As Medicine Collaborative - $300,000</h3>
+              <p class="hit-desc">Resolution retroactively authorizing the Department of Public Health to accept and expend an in-kind gift of materials, supplies and other in-kind items in the amount of $300,000 for the period of July 1, 2026, through June 30, 2027, from Community…</p>
+              <div class="hit-meta"><span class="file">File&nbsp;260879</span> <span class="dot">&middot;</span> <span>New Business</span> <span class="dot">&middot;</span> <a href="https://sfgov.legistar.com/LegislationDetail.aspx?ID=8156757&amp;GUID=C7504568-9B15-4761-A5A3-5E0E19B3784B&amp;Options=&amp;Search=" target="_blank" rel="noopener">details&nbsp;&rarr;</a></div>
+            </li><li class="hit is-new">
+              <div class="hit-tags"><span class="badge t-new">★ New</span><span class="badge t-res">Resolution</span><span class="tag">Contract / grant action</span><span class="tag">HSH / DPH / MOHCD</span></div>
+              <h3 class="hit-title">Loan Amendment - 3300 Mission Partners L.P. - 100% Affordable Housing - Not to Exceed $16,083,595</h3>
+              <p class="hit-desc">Resolution approving and authorizing the First Amendment to the Amended and Restated Loan Agreement in a total amount not to exceed $16,083,595 (“Loan Agreement”) to finance development costs associated with the development of a 35-unit multifamily…</p>
+              <div class="hit-meta"><span class="file">File&nbsp;260968</span> <span class="dot">&middot;</span> <span>New Business</span> <span class="dot">&middot;</span> <a href="https://sfgov.legistar.com/LegislationDetail.aspx?ID=8201435&amp;GUID=B0B943C9-5256-4FF4-B7FE-C7297C15EF0F&amp;Options=&amp;Search=" target="_blank" rel="noopener">details&nbsp;&rarr;</a></div>
+            </li><li class="hit is-new">
+              <div class="hit-tags"><span class="badge t-new">★ New</span><span class="badge t-res">Resolution</span><span class="tag">Contract / grant action</span><span class="tag">Public safety / policing</span></div>
+              <h3 class="hit-title">Accept and Expend Gift - San Francisco Police Community Foundation - Real Time Investigation Center - $3,000,000</h3>
+              <p class="hit-desc">Resolution authorizing the Police Department to accept and expend a cash gift in the amount of $3,000,000 from the San Francisco Police Community Foundation to support the Real Time Investigation Center for technology, software, and infrastructure needs.</p>
+              <div class="hit-meta"><span class="file">File&nbsp;260847</span> <span class="dot">&middot;</span> <span>New Business</span> <span class="dot">&middot;</span> <a href="https://sfgov.legistar.com/LegislationDetail.aspx?ID=8145035&amp;GUID=FEDF6F39-3AAD-4B4F-AE67-F0E85320B20B&amp;Options=&amp;Search=" target="_blank" rel="noopener">details&nbsp;&rarr;</a></div>
+            </li><li class="hit is-new">
+              <div class="hit-tags"><span class="badge t-new">★ New</span><span class="badge t-res">Resolution</span><span class="tag">Contract / grant action</span><span class="tag">Public safety / policing</span></div>
+              <h3 class="hit-title">Accept and Expend Gift - <mark>Retroactive</mark> - China Basin Ballpark Company LLC - Recruitment Testing Event at Oracle Park - $45,500</h3>
+              <p class="hit-desc">Resolution retroactively authorizing the Police Department to accept and expend an in-kind gift of venue space and related facility use at Oracle Park valued at $45,500 from China Basin Ballpark Company LLC to support a Police Department recruitment testing…</p>
+              <div class="hit-meta"><span class="file">File&nbsp;260848</span> <span class="dot">&middot;</span> <span>New Business</span> <span class="dot">&middot;</span> <a href="https://sfgov.legistar.com/LegislationDetail.aspx?ID=8145036&amp;GUID=24A49702-672E-48A3-8BF4-BAAC9E9F5A10&amp;Options=&amp;Search=" target="_blank" rel="noopener">details&nbsp;&rarr;</a></div>
+            </li><li class="hit is-new">
+              <div class="hit-tags"><span class="badge t-new">★ New</span><span class="badge t-res">Resolution</span><span class="tag">Contract / grant action</span><span class="tag">Public safety / policing</span></div>
+              <h3 class="hit-title">Accept and Expend Gift - <mark>Retroactive</mark> - San Francisco Police Community Foundation - O2X Wellness Initiative - $103,750</h3>
+              <p class="hit-desc">Resolution retroactively authorizing the Police Department to accept and expend a cash gift in the amount of $103,750 from the San Francisco Police Community Foundation to support the Police Department’s O2X Wellness Initiative and officer wellness…</p>
+              <div class="hit-meta"><span class="file">File&nbsp;260849</span> <span class="dot">&middot;</span> <span>New Business</span> <span class="dot">&middot;</span> <a href="https://sfgov.legistar.com/LegislationDetail.aspx?ID=8145037&amp;GUID=D51EE7FE-5B2F-4EEE-80BE-BD3B9A20598B&amp;Options=&amp;Search=" target="_blank" rel="noopener">details&nbsp;&rarr;</a></div>
+            </li><li class="hit is-new">
+              <div class="hit-tags"><span class="badge t-new">★ New</span><span class="badge t-res">Resolution</span><span class="tag">Contract / grant action</span><span class="tag">Public safety / policing</span></div>
+              <h3 class="hit-title">Accept and Expend Grant - <mark>Retroactive</mark> - Department of California Highway Patrol - FY2026-2027 Cannabis Tax Fund Grant Program - $772,507</h3>
+              <p class="hit-desc">Resolution retroactively authorizing the Police Department (<mark>SFPD</mark>) to accept and expend a grant in the amount of $772,507 and to execute a Grant Agreement from the Department of California Highway Patrol for the Fiscal Year (FY) 2026-2027 Cannabis Tax Fund…</p>
+              <div class="hit-meta"><span class="file">File&nbsp;260966</span> <span class="dot">&middot;</span> <span>New Business</span> <span class="dot">&middot;</span> <a href="https://sfgov.legistar.com/LegislationDetail.aspx?ID=8201433&amp;GUID=8FE3CB88-E5A6-4F33-BFBD-4A9D64CDC611&amp;Options=&amp;Search=" target="_blank" rel="noopener">details&nbsp;&rarr;</a></div>
+            </li><li class="hit is-new">
+              <div class="hit-tags"><span class="badge t-new">★ New</span><span class="badge t-ord">Ordinance</span><span class="tag">HSH / DPH / MOHCD</span></div>
+              <h3 class="hit-title">Administrative Code - Establishment of Office of Food Security Coordination</h3>
+              <p class="hit-desc">Ordinance amending the Administrative Code to establish an Office of Food Security Coordination within the Human Services Agency, charged with coordinating citywide efforts to address food insecurity among San Francisco residents, preparing a Food Security…</p>
+              <div class="hit-meta"><span class="file">File&nbsp;260869</span> <span class="dot">&middot;</span> <span>First Reading</span> <span class="dot">&middot;</span> <a href="https://sfgov.legistar.com/LegislationDetail.aspx?ID=8156754&amp;GUID=3CBB91A8-6AA2-4AE9-B7D5-DAA5EB471B68&amp;Options=&amp;Search=" target="_blank" rel="noopener">details&nbsp;&rarr;</a></div>
+            </li><li class="hit is-new">
+              <div class="hit-tags"><span class="badge t-new">★ New</span><span class="badge t-res">Resolution</span><span class="tag">Homelessness / shelter / supportive housing</span></div>
+              <h3 class="hit-title">Board Response - Civil Grand Jury Report - At Scale, At Risk - Upgrading Data and Oversight to Improve <mark>Homelessness</mark> Services</h3>
+              <p class="hit-desc">Resolution responding to the Presiding Judge of the Superior Court on the findings and recommendations contained in the 2025-2026 Civil Grand Jury Report, entitled &quot;At Scale, At Risk - Upgrading Data and Oversight to Improve <mark>Homelessness</mark> Services;&quot; and urging…</p>
+              <div class="hit-meta"><span class="file">File&nbsp;260730</span> <span class="dot">&middot;</span> <span>New Business</span> <span class="dot">&middot;</span> <a href="https://sfgov.legistar.com/LegislationDetail.aspx?ID=8118902&amp;GUID=E895D4E1-EDA7-4A8A-A428-666F4C970D3F&amp;Options=&amp;Search=" target="_blank" rel="noopener">details&nbsp;&rarr;</a></div>
+            </li><li class="hit is-new">
+              <div class="hit-tags"><span class="badge t-new">★ New</span><span class="badge t-res">Resolution</span><span class="tag">SWNA active topics</span></div>
+              <h3 class="hit-title">San Francisco Good Neighbor Week - September 26 through October 4, 2026</h3>
+              <p class="hit-desc">Resolution celebrating neighborliness and declaring the week of September 26 through October 4, 2026, as “San Francisco Good Neighbor Week,” in the City and County of San Francisco; and reaffirming the City’s commitment to establishing strong neighborhoods…</p>
+              <div class="hit-meta"><span class="file">File&nbsp;261062</span> <span class="dot">&middot;</span> <span>For Immediate Adoption</span> <span class="dot">&middot;</span> <a href="https://sfgov.legistar.com/LegislationDetail.aspx?ID=8238563&amp;GUID=F1BB77D8-E1D7-4C25-8480-2CC451561E53&amp;Options=&amp;Search=" target="_blank" rel="noopener">details&nbsp;&rarr;</a></div>
+            </li></ul>
+        </section><section class="card">
+          <div class="card-head">
+            <div>
+              <h2>Budget and Finance Committee</h2>
+              <div class="meta">Wednesday, September 30, 2026 &middot; 10:00 AM
+                &middot; <a href="https://sfgov.legistar.com/MeetingDetail.aspx?ID=1446421&amp;GUID=A214F14A-9FCD-4F0D-8428-24ADB4B08367&amp;Options=info|&amp;Search=" target="_blank" rel="noopener">meeting&nbsp;page</a>
+                 &middot; <a href="https://sfgov.legistar.com/View.ashx?M=A&amp;ID=1446421&amp;GUID=A214F14A-9FCD-4F0D-8428-24ADB4B08367" target="_blank" rel="noopener">agenda&nbsp;PDF</a></div>
+            </div>
+            <span class="count">4 items</span>
+          </div>
+          <ul class="hits"><li class="hit is-new">
+              <div class="hit-tags"><span class="badge t-new">★ New</span><span class="badge t-res">Resolution</span><span class="tag">Contract / grant action</span><span class="tag">HSH / DPH / MOHCD</span></div>
+              <h3 class="hit-title">Accept and Expend Grant - <mark>Retroactive</mark> - Governor&#x27;s Office of Emergency Services - San Francisco General Hospital Foundation - Physical and Digital Infrastructure Security (PDIS) Women’s Options Center (WOC) 6G Improvements - $475,000</h3>
+              <p class="hit-desc">Resolution retroactively authorizing the Department of Public Health to accept and expend a grant in the amount of $475,000 from the Governor&#x27;s Office of Emergency Services (Cal OES) through San Francisco General Hospital Foundation for participation in a…</p>
+              <div class="hit-meta"><span class="file">File&nbsp;260845</span> <span class="dot">&middot;</span> <span>Scheduled for Committee Hearing</span> <span class="dot">&middot;</span> <a href="https://sfgov.legistar.com/LegislationDetail.aspx?ID=8145033&amp;GUID=295629E8-BA14-4505-9517-C7BC6372420B&amp;Options=&amp;Search=" target="_blank" rel="noopener">details&nbsp;&rarr;</a></div>
+            </li><li class="hit is-new">
+              <div class="hit-tags"><span class="badge t-new">★ New</span><span class="badge t-res">Resolution</span><span class="tag">Contract / grant action</span><span class="tag">HSH / DPH / MOHCD</span></div>
+              <h3 class="hit-title">Accept and Expend Grant Increase - <mark>Retroactive</mark> - Health Resource and Service Administration - Ending the HIV Epidemic: A Plan for America - Ryan White HIV/AIDS Program Parts A and B - $6,102,743</h3>
+              <p class="hit-desc">Resolution retroactively authorizing the Department of Public Health to accept and expend a grant increase from the Health Resource and Service Administration for participation in a program, entitled “Ending the HIV Epidemic: A Plan for America - Ryan White…</p>
+              <div class="hit-meta"><span class="file">File&nbsp;260846</span> <span class="dot">&middot;</span> <span>Scheduled for Committee Hearing</span> <span class="dot">&middot;</span> <a href="https://sfgov.legistar.com/LegislationDetail.aspx?ID=8145034&amp;GUID=86951A05-84EA-4A72-86CF-AC672B70F9FA&amp;Options=&amp;Search=" target="_blank" rel="noopener">details&nbsp;&rarr;</a></div>
+            </li><li class="hit is-new">
+              <div class="hit-tags"><span class="badge t-new">★ New</span><span class="badge t-res">Resolution</span><span class="tag">Contract / grant action</span><span class="tag">HSH / DPH / MOHCD</span></div>
+              <h3 class="hit-title">Real Property Lease Amendment - <mark>Retroactive</mark> - Mattison Family Trust - 555 Polk Street - $202,500 Annual Base Rent With 3% Annual Increases</h3>
+              <p class="hit-desc">Resolution approving and authorizing the Director of Property, on behalf of the Department of Public Health, to execute a first amendment to a lease of real property located at 555 Polk Street from Mattison Family Trust, at an annual base rent of $202,500…</p>
+              <div class="hit-meta"><span class="file">File&nbsp;260947</span> <span class="dot">&middot;</span> <span>Scheduled for Committee Hearing</span> <span class="dot">&middot;</span> <a href="https://sfgov.legistar.com/LegislationDetail.aspx?ID=8190357&amp;GUID=FF59F2AB-C082-44A5-B855-050F29254944&amp;Options=&amp;Search=" target="_blank" rel="noopener">details&nbsp;&rarr;</a></div>
+            </li><li class="hit is-new">
+              <div class="hit-tags"><span class="badge t-new">★ New</span><span class="badge t-ord">Ordinance</span><span class="tag">HSH / DPH / MOHCD</span></div>
+              <h3 class="hit-title">Appropriation - General Reserve - Mayor’s Office of Housing and Community Development - Rent Relief Support Services - $3,940,000 - FY2026-2027</h3>
+              <p class="hit-desc">Ordinance appropriating $3,940,000 from the General Reserve to the Mayor’s Office of Housing and Community Development to support costs associated with rent relief support services in Fiscal Year (FY) 2026-2027.</p>
+              <div class="hit-meta"><span class="file">File&nbsp;261012</span> <span class="dot">&middot;</span> <span>30 Day Rule</span> <span class="dot">&middot;</span> <a href="https://sfgov.legistar.com/LegislationDetail.aspx?ID=8217288&amp;GUID=50831A51-4BB2-4531-AD2C-E8B7EC6730BC&amp;Options=&amp;Search=" target="_blank" rel="noopener">details&nbsp;&rarr;</a></div>
+            </li></ul>
+        </section><section class="card">
+          <div class="card-head">
+            <div>
+              <h2>Rules Committee</h2>
+              <div class="meta">Monday, October 5, 2026 &middot; 10:00 AM
+                &middot; <a href="https://sfgov.legistar.com/MeetingDetail.aspx?ID=1448938&amp;GUID=2E6C0898-AD6B-4AE5-BD0F-B9D1A180EA1F&amp;Options=info|&amp;Search=" target="_blank" rel="noopener">meeting&nbsp;page</a>
+                 &middot; <a href="https://sfgov.legistar.com/View.ashx?M=A&amp;ID=1448938&amp;GUID=2E6C0898-AD6B-4AE5-BD0F-B9D1A180EA1F" target="_blank" rel="noopener">agenda&nbsp;PDF</a></div>
+            </div>
+            <span class="count">1 item</span>
+          </div>
+          <ul class="hits"><li class="hit is-new">
+              <div class="hit-tags"><span class="badge t-new">★ New</span><span class="badge t-hear">Hearing</span><span class="tag">HSH / DPH / MOHCD</span></div>
+              <h3 class="hit-title">Hearing - <mark>MOHCD</mark>’s Programs, Policies, Eligibility Requirements, Funding, Outreach and Outcomes Related to HOPE SF</h3>
+              <p class="hit-desc">Hearing to examine the Mayor’s Office of Housing and Community Development’s (<mark>MOHCD</mark>) programs, policies, eligibility requirements, funding, outreach, and outcomes related to HOPE SF and public housing residents, the Downpayment Assistance Loan Program (DALP)…</p>
+              <div class="hit-meta"><span class="file">File&nbsp;260895</span> <span class="dot">&middot;</span> <span>Pending Committee Action</span> <span class="dot">&middot;</span> <a href="https://sfgov.legistar.com/LegislationDetail.aspx?ID=8156773&amp;GUID=AC47A54D-8F0E-443D-BF56-44092FEC789D&amp;Options=&amp;Search=" target="_blank" rel="noopener">details&nbsp;&rarr;</a></div>
+            </li></ul>
+        </section>
+  <div class="other">
+    <h2 class="section" style="margin-top:0">Other upcoming meetings</h2>
+    <ul><li><a href="https://sfgov.legistar.com/MeetingDetail.aspx?ID=1445077&amp;GUID=BB90BCD3-65B3-4337-A9C0-3B549CA08189&amp;Options=info|&amp;Search=" target="_blank" rel="noopener">Rules Committee</a> <span class="muted">&mdash; Mon Sep 28 &middot; no matching items &middot; 3 on agenda</span></li><li><a href="https://sfgov.legistar.com/MeetingDetail.aspx?ID=1446183&amp;GUID=8CA1B625-4807-433B-A54B-FCE6DEEF8D97&amp;Options=info|&amp;Search=" target="_blank" rel="noopener">Government Audit and Oversight Committee</a> <span class="muted">&mdash; Thu Oct 1 &middot; no matching items &middot; 3 on agenda</span></li></ul>
+  </div>
+</div>
+<footer>
+  <p>Automatically generated from the
+  <a href="https://sfgov.legistar.com/Calendar.aspx" target="_blank" rel="noopener">SF Legistar calendar</a>,
+  twice a week. Items are flagged by keyword and may include occasional false positives &mdash;
+  always confirm against the official agenda before acting. This is a volunteer neighborhood
+  tool, not an official City of San Francisco source.</p>
+</footer>
+</body>
+</html>
