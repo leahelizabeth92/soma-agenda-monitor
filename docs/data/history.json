@@ -2542,5 +2542,107 @@
     "meetings_scanned": 2,
     "relevant_items": 0,
     "flagged": []
+  },
+  {
+    "date": "2026-10-05",
+    "generated": "2026-10-05T14:45:41",
+    "meetings_scanned": 6,
+    "relevant_items": 14,
+    "flagged": [
+      {
+        "body": "Board of Supervisors",
+        "date": "2026-10-06",
+        "items": [
+          {
+            "file": "261074",
+            "title": "Grant Agreement Amendment - Larkin Street Youth Services - Lark Inn Shelter - Not to Exceed $14,926,904",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8255276&GUID=39CBD3D3-AA2C-429A-AD85-DF182BFCAAE4&Options=&Search="
+          },
+          {
+            "file": "260845",
+            "title": "Accept and Expend Grant - Retroactive - Governor's Office of Emergency Services - San Francisco General Hospital Foundation - Physical and Digital Infrastructur",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8145033&GUID=295629E8-BA14-4505-9517-C7BC6372420B&Options=&Search="
+          },
+          {
+            "file": "260846",
+            "title": "Accept and Expend Grant Increase - Retroactive - Health Resource and Service Administration - Ending the HIV Epidemic: A Plan for America - Ryan White HIV/AIDS ",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8145034&GUID=86951A05-84EA-4A72-86CF-AC672B70F9FA&Options=&Search="
+          },
+          {
+            "file": "260947",
+            "title": "Real Property Lease Amendment - Retroactive - Mattison Family Trust - 555 Polk Street - $202,500 Annual Base Rent With 3% Annual Increases",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8190357&GUID=FF59F2AB-C082-44A5-B855-050F29254944&Options=&Search="
+          },
+          {
+            "file": "260869",
+            "title": "Administrative Code - Establishment of Office of Food Security Coordination",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8156754&GUID=3CBB91A8-6AA2-4AE9-B7D5-DAA5EB471B68&Options=&Search="
+          },
+          {
+            "file": "260955",
+            "title": "Transfer of the Fillmore Heritage Center Commercial Parcel, Garage Parcel, and Ellis Driveway - Office of Community Investment and Infrastructure - Mayor's Offi",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8191035&GUID=C0256F47-06EF-4B93-BE50-BA71EE1763FF&Options=&Search="
+          },
+          {
+            "file": "260912",
+            "title": "Liquor License Transfer - 1360 4th Street - Mission Bay Community Market",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8183318&GUID=9BC8B318-9241-4972-AE00-B18D4262B9BA&Options=&Search="
+          }
+        ]
+      },
+      {
+        "body": "Budget and Finance Committee",
+        "date": "2026-10-07",
+        "items": [
+          {
+            "file": "260967",
+            "title": "Accept and Expend Grant - Retroactive - National Institutes of Health - Family Health International - HIV Prevention Trials Network (HPTN) - $181,434",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8201434&GUID=2525FD14-F580-42A5-A95A-BEBCC1E73489&Options=&Search="
+          },
+          {
+            "file": "261056",
+            "title": "Accept and Expend Grant - Grant Agreement - Retroactive - California Department of Health Care Services - Bond BHCIP Round 2 - 415 Trade Winds Avenue - Anticipa",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8238557&GUID=01605B44-E1C8-4DCE-B75F-EE89CAD39979&Options=&Search="
+          },
+          {
+            "file": "260997",
+            "title": "Real Property Lease - West Bay Local Development Corporation, dba West Bay Conference Center - 1290 Fillmore Street, Suite 103 and Gallery B - $105,138.88 Initi",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8202362&GUID=77E923F0-56CB-4738-9F20-56D8F29809F5&Options=&Search="
+          },
+          {
+            "file": "260998",
+            "title": "Real Property Lease - Fillmore Center Associates, LP - 1533 Eddy Street, 2nd Floor - $39,600 Initial Annual Base Rent with 3% Annual Increases",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8202429&GUID=4893937A-F0D1-4E90-B51B-B8F074875816&Options=&Search="
+          },
+          {
+            "file": "261012",
+            "title": "Appropriation - General Reserve - Mayor\u2019s Office of Housing and Community Development - Rent Relief Support Services - $3,940,000 - FY2026-2027",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8217288&GUID=50831A51-4BB2-4531-AD2C-E8B7EC6730BC&Options=&Search="
+          }
+        ]
+      },
+      {
+        "body": "Joint Special Meeting - Public Safety and Neighborhood Services Committee and Commission on the Status of Women",
+        "date": "2026-10-08",
+        "items": [
+          {
+            "file": "260893",
+            "title": "Joint Hearing - Staffing Needs, Policies, and Procedures Responding to Sexual Assault",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8156771&GUID=DF2F9541-7208-4021-BD89-3071DDA82F4D&Options=&Search="
+          }
+        ]
+      },
+      {
+        "body": "Public Safety and Neighborhood Services Committee",
+        "date": "2026-10-08",
+        "items": [
+          {
+            "file": "260892",
+            "title": "Hearing - Citywide Drug Market Conditions",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8156770&GUID=E131C56D-15E3-406C-B675-B510A218E606&Options=&Search="
+          }
+        ]
+      }
+    ]
   }
 ]
