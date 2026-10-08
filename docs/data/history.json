@@ -2644,5 +2644,35 @@
         ]
       }
     ]
+  },
+  {
+    "date": "2026-10-08",
+    "generated": "2026-10-08T13:25:57",
+    "meetings_scanned": 2,
+    "relevant_items": 2,
+    "flagged": [
+      {
+        "body": "Joint Special Meeting - Public Safety and Neighborhood Services Committee and Commission on the Status of Women",
+        "date": "2026-10-08",
+        "items": [
+          {
+            "file": "260893",
+            "title": "Joint Hearing - Staffing Needs, Policies, and Procedures Responding to Sexual Assault",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8156771&GUID=DF2F9541-7208-4021-BD89-3071DDA82F4D&Options=&Search="
+          }
+        ]
+      },
+      {
+        "body": "Public Safety and Neighborhood Services Committee",
+        "date": "2026-10-08",
+        "items": [
+          {
+            "file": "260892",
+            "title": "Hearing - Citywide Drug Market Conditions",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8156770&GUID=E131C56D-15E3-406C-B675-B510A218E606&Options=&Search="
+          }
+        ]
+      }
+    ]
   }
 ]
