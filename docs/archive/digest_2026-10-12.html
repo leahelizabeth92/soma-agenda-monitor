@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SOMA West &middot; SF Agenda Monitor</title>
+<style>
+  :root {
+    --ink:#16161d; --soft:#55566b; --muted:#85869a; --line:#ececf3;
+    --bg:#f4f4f8; --card:#ffffff; --accent:#4c5fd5; --accent-dark:#3a2e8f;
+    --mark:#ffe98a; --chip:#eef0fe; --chip-ink:#3f4bc4;
+  }
+  * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { margin:0; color:var(--ink); background:var(--bg); line-height:1.55;
+    font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased; }
+  a { color:var(--accent); }
+  .wrap { max-width:860px; margin:0 auto; padding:0 22px; }
+
+  header.top { background:linear-gradient(135deg,#4c5fd5 0%,#6b3fc4 60%,#7c3aab 100%);
+    color:#fff; padding:40px 22px 30px; }
+  header.top .wrap { padding:0; }
+  .brand { font-size:.75rem; letter-spacing:.14em; text-transform:uppercase;
+    opacity:.85; font-weight:600; margin-bottom:8px; }
+  header.top h1 { margin:0 0 10px; font-size:1.75rem; line-height:1.2; font-weight:700; }
+  header.top .lede { margin:0; opacity:.92; font-size:1rem; max-width:60ch; }
+  .updated { margin-top:16px; font-size:.82rem; opacity:.85;
+    display:inline-flex; align-items:center; gap:7px; }
+  .updated .dotlive { width:8px; height:8px; border-radius:50%; background:#7ef0b0;
+    box-shadow:0 0 0 3px rgba(126,240,176,.25); }
+
+  .summary { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin:-22px auto 26px; }
+  .stat { background:var(--card); border:1px solid var(--line); border-radius:16px;
+    padding:18px; box-shadow:0 6px 20px rgba(30,30,60,.06); text-align:center; }
+  .stat .n { font-size:2rem; font-weight:700; color:var(--accent); line-height:1; }
+  .stat .l { font-size:.72rem; color:var(--muted); text-transform:uppercase;
+    letter-spacing:.06em; margin-top:7px; font-weight:600; }
+
+  h2.section { font-size:.8rem; letter-spacing:.08em; text-transform:uppercase;
+    color:var(--muted); margin:30px 0 4px; font-weight:700; }
+  .newbanner { background:#fff4f4; border:1px solid #ffd5d5; color:#b33049;
+    border-radius:14px; padding:12px 18px; font-size:.9rem; font-weight:600;
+    margin:6px auto 0; }
+
+  .card { background:var(--card); border:1px solid var(--line); border-radius:18px;
+    padding:6px 24px 22px; margin:16px auto; box-shadow:0 4px 18px rgba(30,30,60,.05);
+    overflow:hidden; }
+  .card-head { display:flex; justify-content:space-between; align-items:flex-start;
+    gap:14px; padding:18px 0 4px; border-bottom:1px solid var(--line);
+    margin:0 -24px 6px; padding-left:24px; padding-right:24px; }
+  .card-head h2 { margin:0 0 3px; font-size:1.2rem; font-weight:700; }
+  .meta { font-size:.84rem; color:var(--soft); }
+  .meta a { text-decoration:none; }
+  .meta a:hover { text-decoration:underline; }
+  .count { flex:none; font-size:.74rem; font-weight:700; color:#fff;
+    background:var(--accent); padding:5px 12px; border-radius:30px; white-space:nowrap; }
+
+  ul.hits { list-style:none; margin:0; padding:0; }
+  li.hit { padding:16px 0; border-bottom:1px solid var(--line); }
+  li.hit:last-child { border-bottom:none; padding-bottom:2px; }
+  .hit-tags { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:8px; align-items:center; }
+  .badge { font-size:.66rem; font-weight:700; text-transform:uppercase; letter-spacing:.05em;
+    padding:3px 9px; border-radius:6px; }
+  .t-ord { background:#e7ecff; color:#33409e; }
+  .t-res { background:#e3f6ec; color:#1f7a4d; }
+  .t-mot { background:#f3e9ff; color:#6b3fae; }
+  .t-hear { background:#fff0e0; color:#b9651b; }
+  .t-other { background:#eef0f3; color:#5a6072; }
+  .t-new { background:#ffe2e2; color:#c0344b; }
+  li.hit.is-new { background:linear-gradient(90deg,rgba(255,226,226,.5),transparent 60%);
+    margin:0 -24px; padding-left:24px; padding-right:24px; border-radius:10px; }
+  .tag { font-size:.7rem; background:var(--chip); color:var(--chip-ink);
+    border-radius:30px; padding:3px 10px; font-weight:600; }
+  .hit-title { font-size:1.02rem; font-weight:650; margin:0 0 5px; line-height:1.4; }
+  .hit-desc { font-size:.9rem; color:var(--soft); margin:0 0 9px; }
+  .hit-meta { font-size:.8rem; color:var(--muted); display:flex; flex-wrap:wrap;
+    gap:8px; align-items:center; }
+  .hit-meta .file { font-weight:700; color:var(--soft); }
+  .hit-meta a { text-decoration:none; font-weight:600; }
+  .hit-meta a:hover { text-decoration:underline; }
+  .hit-meta .dot { color:var(--line); }
+  mark { background:var(--mark); padding:0 3px; border-radius:3px; font-weight:inherit; }
+
+  .muted { color:var(--muted); }
+  .other { background:var(--card); border:1px solid var(--line); border-radius:18px;
+    padding:20px 24px; margin:16px auto 0; box-shadow:0 4px 18px rgba(30,30,60,.05); }
+  .other ul { margin:0; padding:0; list-style:none; }
+  .other li { font-size:.88rem; margin:9px 0; padding-left:16px; position:relative; }
+  .other li::before { content:"›"; position:absolute; left:0; color:var(--muted); }
+  .other a { text-decoration:none; font-weight:600; }
+
+  footer { max-width:860px; margin:30px auto 56px; padding:18px 22px 0;
+    font-size:.8rem; color:var(--muted); border-top:1px solid var(--line); }
+  footer a { color:var(--accent); }
+
+  @media (max-width:560px) {
+    header.top { padding:30px 18px 26px; }
+    header.top h1 { font-size:1.45rem; }
+    .summary { grid-template-columns:1fr 1fr 1fr; gap:8px; }
+    .stat { padding:12px 6px; }
+    .stat .n { font-size:1.5rem; }
+    .stat .l { font-size:.6rem; }
+    .card { padding:6px 16px 16px; }
+    .card-head { flex-direction:column; margin:0 -16px 6px; padding-left:16px; padding-right:16px; }
+  }
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <div class="brand">SOMA West Neighborhood Association</div>
+  <h1>SF Board &amp; Committee Agenda Monitor</h1>
+  <p class="lede">Upcoming San Francisco Board of Supervisors and committee agenda items
+    relevant to SOMA West &mdash; homelessness, public safety, nonprofit contracts under
+    HSH&nbsp;/&nbsp;DPH&nbsp;/&nbsp;MOHCD, and the RESET center.</p>
+  <div class="updated"><span class="dotlive"></span> Updated Monday, October 12, 2026 at 3:20 PM</div>
+</div></header>
+<div class="wrap">
+  <div class="summary">
+    <div class="stat"><div class="n">0</div><div class="l">Relevant items</div></div>
+    <div class="stat"><div class="n">0</div><div class="l">Meetings flagged</div></div>
+    <div class="stat"><div class="n">1</div><div class="l">Meetings scanned</div></div>
+  </div>
+  
+  <h2 class="section">Flagged meetings</h2>
+  <section class="card"><p class="muted">Meetings are scheduled, but none of the posted agenda items match the SOMA West topics yet. Agendas fill in over the days before each meeting &mdash; check back after the next scan.</p></section>
+  <div class="other">
+    <h2 class="section" style="margin-top:0">Other upcoming meetings</h2>
+    <ul><li><a href="https://sfgov.legistar.com/MeetingDetail.aspx?ID=1454257&amp;GUID=58FDAE38-63AF-433D-8575-F3667C34EC99&amp;Options=info|&amp;Search=" target="_blank" rel="noopener">Government Audit and Oversight Committee</a> <span class="muted">&mdash; Thu Oct 15 &middot; no matching items &middot; 24 on agenda</span></li></ul>
+  </div>
+</div>
+<footer>
+  <p>Automatically generated from the
+  <a href="https://sfgov.legistar.com/Calendar.aspx" target="_blank" rel="noopener">SF Legistar calendar</a>,
+  twice a week. Items are flagged by keyword and may include occasional false positives &mdash;
+  always confirm against the official agenda before acting. This is a volunteer neighborhood
+  tool, not an official City of San Francisco source.</p>
+</footer>
+</body>
+</html>
