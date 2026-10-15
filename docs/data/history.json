@@ -2681,5 +2681,24 @@
     "meetings_scanned": 1,
     "relevant_items": 0,
     "flagged": []
+  },
+  {
+    "date": "2026-10-15",
+    "generated": "2026-10-15T11:48:51",
+    "meetings_scanned": 2,
+    "relevant_items": 1,
+    "flagged": [
+      {
+        "body": "Rules Committee",
+        "date": "2026-10-19",
+        "items": [
+          {
+            "file": "261101",
+            "title": "Administrative Code - Sober Spaces Program and Fund",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8283726&GUID=C2CD6D5E-16CF-4837-91FA-A12E3C415A64&Options=&Search="
+          }
+        ]
+      }
+    ]
   }
 ]
