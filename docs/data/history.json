@@ -2700,5 +2700,96 @@
         ]
       }
     ]
+  },
+  {
+    "date": "2026-10-19",
+    "generated": "2026-10-19T13:18:33",
+    "meetings_scanned": 4,
+    "relevant_items": 13,
+    "flagged": [
+      {
+        "body": "Board of Supervisors",
+        "date": "2026-10-20",
+        "items": [
+          {
+            "file": "261118",
+            "title": "Agreement Amendment - Felton Institute - Integrated Recovery and Treatment Approach for Vulnerable San Francisco Transitional Age Youth - Not to Exceed $20,669,",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8284664&GUID=6E220FA2-8A01-481E-9296-3C63D0425A35&Options=&Search="
+          },
+          {
+            "file": "261120",
+            "title": "Agreement Amendment - Central City Hospitality House - Services to Improve Behavioral Health Outcomes for Adults and Older Adults - Not to Exceed $20,529,376",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8284805&GUID=716D7EB5-B85F-4235-AC7C-2A805300B7B3&Options=&Search="
+          },
+          {
+            "file": "260967",
+            "title": "Accept and Expend Grant - Retroactive - National Institutes of Health - Family Health International - HIV Prevention Trials Network (HPTN) - $181,434",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8201434&GUID=2525FD14-F580-42A5-A95A-BEBCC1E73489&Options=&Search="
+          },
+          {
+            "file": "261056",
+            "title": "Accept and Expend Grant - Grant Agreement - Retroactive - California Department of Health Care Services - Bond BHCIP Round 2 - 415 Trade Winds Avenue - Anticipa",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8238557&GUID=01605B44-E1C8-4DCE-B75F-EE89CAD39979&Options=&Search="
+          },
+          {
+            "file": "261117",
+            "title": "Agreement Amendment - Westside Community Mental Health Center Inc. - Outpatient Mental Health Services - Not to Exceed $17,525,883",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8284663&GUID=7FFE87D6-9B62-451F-B25F-66DDC4511CD1&Options=&Search="
+          },
+          {
+            "file": "261119",
+            "title": "Agreement Amendment - Bayview Hunters Point Foundation - Methadone Services - Not to Exceed $18,253,903",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8284846&GUID=47C5B3DF-4AB0-459D-ACAF-24175E819EFD&Options=&Search="
+          },
+          {
+            "file": "261121",
+            "title": "Agreement Amendment - The Regents of the University of California - Addiction Treatment and Reduce Dangers of Drug Abuse through Opiate Treatment Outpatient Pro",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8284742&GUID=BEDE93BB-0823-42A3-952E-2FA0312C3862&Options=&Search="
+          },
+          {
+            "file": "261122",
+            "title": "Agreement Amendment - Health Right 360 - Check Writing Services - Not to Exceed $137,243,348",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8284964&GUID=EBA47F1A-0D73-4ADF-A0C4-A20B67CEF616&Options=&Search="
+          },
+          {
+            "file": "260997",
+            "title": "Real Property Lease - West Bay Local Development Corporation, dba West Bay Conference Center - 1290 Fillmore Street, Suite 103 and Gallery B - $105,138.88 Initi",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8202362&GUID=77E923F0-56CB-4738-9F20-56D8F29809F5&Options=&Search="
+          },
+          {
+            "file": "260998",
+            "title": "Real Property Lease - Fillmore Center Associates, LP - 1533 Eddy Street, 2nd Floor - $39,600 Initial Annual Base Rent with 3% Annual Increases",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8202429&GUID=4893937A-F0D1-4E90-B51B-B8F074875816&Options=&Search="
+          },
+          {
+            "file": "261114",
+            "title": "Apply for Grant and Accept Funds Allocation - Transitional Housing Programs - Up to $4,698,298 - Housing Navigation and Maintenance Program -Up to $588,826",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8284595&GUID=332B6383-0CC1-45B4-9386-A654030EC986&Options=&Search="
+          }
+        ]
+      },
+      {
+        "body": "Budget and Finance Committee",
+        "date": "2026-10-21",
+        "items": [
+          {
+            "file": "261012",
+            "title": "Appropriation - General Reserve - Mayor\u2019s Office of Housing and Community Development - Rent Relief Support Services - $3,940,000 - FY2026-2027",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8217288&GUID=50831A51-4BB2-4531-AD2C-E8B7EC6730BC&Options=&Search="
+          }
+        ]
+      },
+      {
+        "body": "Public Safety and Neighborhood Services Committee",
+        "date": "2026-10-22",
+        "items": [
+          {
+            "file": "260896",
+            "title": "Liquor License Transfer - 26 7th Street - Odd Fellows",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8163587&GUID=A7F78669-E530-4DE3-A0CB-3593A15C0A74&Options=&Search="
+          }
+        ]
+      }
+    ]
   }
 ]
