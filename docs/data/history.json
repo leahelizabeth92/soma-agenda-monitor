@@ -2791,5 +2791,24 @@
         ]
       }
     ]
+  },
+  {
+    "date": "2026-10-22",
+    "generated": "2026-10-22T11:59:44",
+    "meetings_scanned": 2,
+    "relevant_items": 1,
+    "flagged": [
+      {
+        "body": "Public Safety and Neighborhood Services Committee",
+        "date": "2026-10-22",
+        "items": [
+          {
+            "file": "260896",
+            "title": "Liquor License Transfer - 26 7th Street - Odd Fellows",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8163587&GUID=A7F78669-E530-4DE3-A0CB-3593A15C0A74&Options=&Search="
+          }
+        ]
+      }
+    ]
   }
 ]
