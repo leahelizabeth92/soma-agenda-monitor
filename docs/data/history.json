@@ -2810,5 +2810,76 @@
         ]
       }
     ]
+  },
+  {
+    "date": "2026-10-26",
+    "generated": "2026-10-26T13:15:04",
+    "meetings_scanned": 4,
+    "relevant_items": 9,
+    "flagged": [
+      {
+        "body": "Board of Supervisors",
+        "date": "2026-10-27",
+        "items": [
+          {
+            "file": "261130",
+            "title": "Agreement Amendment - Urban Alchemy - Community Response Team Services - Not to Exceed $14,630,871",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8293737&GUID=2A8E2E64-F1D2-429F-9649-940C25B4A371&Options=&Search="
+          },
+          {
+            "file": "261131",
+            "title": "Grant Agreement Amendment - Episcopal Community Services of San Francisco - Housing Navigation Services - Not to Exceed $22,749,253",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8293594&GUID=BFFBD6BD-F09D-4CE9-A3AE-447812967E63&Options=&Search="
+          },
+          {
+            "file": "261129",
+            "title": "Agreement Amendment - Felton Institute - Mental Health and Substance Abuse Treatment Services - Not to Exceed $93,559,299",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8293527&GUID=EDB26FA4-9C3E-475C-8F37-967BE882B0A5&Options=&Search="
+          }
+        ]
+      },
+      {
+        "body": "Budget and Finance Committee",
+        "date": "2026-10-28",
+        "items": [
+          {
+            "file": "261023",
+            "title": "Grant Agreement Amendment - Five Keys Schools and Programs - Baldwin SAFE Navigation Center - Not to Exceed $62,182,906",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8217307&GUID=A12211BB-D597-4D58-85F3-BF1A29196E0E&Options=&Search="
+          },
+          {
+            "file": "261043",
+            "title": "Grant Agreement Amendment - Conard House - Allen, Aranda, and McAllister Hotels - Support Services, Property Management and Master Lease Stewardship Not to Exce",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8219356&GUID=21C38B47-46C4-4C5C-B683-006B06671973&Options=&Search="
+          },
+          {
+            "file": "261108",
+            "title": "Program Funding Agreement - California Department of Health Care Services - Bond BHCIP Round 2 - UCSF Health Hyde Hospital - Not to Exceed $70,893,613",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8283733&GUID=851CC845-DDCB-4103-84C2-CC0E8CE3546F&Options=&Search="
+          },
+          {
+            "file": "261012",
+            "title": "Appropriation - General Reserve - Mayor\u2019s Office of Housing and Community Development - Rent Relief Support Services - $3,940,000 - FY2026-2027",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8217288&GUID=50831A51-4BB2-4531-AD2C-E8B7EC6730BC&Options=&Search="
+          },
+          {
+            "file": "261148",
+            "title": "Appropriation - General Reserve - Mayor\u2019s Office of Housing and Community Development - Immigration Legal Services - $1,765,000 - FY2026-2027",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8298232&GUID=4C71F4F4-1E7E-4730-A9F1-4B181085FAA6&Options=&Search="
+          }
+        ]
+      },
+      {
+        "body": "Public Safety and Neighborhood Services Committee",
+        "date": "2026-10-29",
+        "items": [
+          {
+            "file": "261066",
+            "title": "Hearing - El Ni\u00f1o Storm Preparedness",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8238566&GUID=12A716AC-0C40-441C-889C-B0384FA12DBC&Options=&Search="
+          }
+        ]
+      }
+    ]
   }
 ]
