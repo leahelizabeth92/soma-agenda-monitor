@@ -2881,5 +2881,24 @@
         ]
       }
     ]
+  },
+  {
+    "date": "2026-10-29",
+    "generated": "2026-10-29T13:00:08",
+    "meetings_scanned": 3,
+    "relevant_items": 1,
+    "flagged": [
+      {
+        "body": "Public Safety and Neighborhood Services Committee",
+        "date": "2026-10-29",
+        "items": [
+          {
+            "file": "261066",
+            "title": "Hearing - El Ni\u00f1o Storm Preparedness",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8238566&GUID=12A716AC-0C40-441C-889C-B0384FA12DBC&Options=&Search="
+          }
+        ]
+      }
+    ]
   }
 ]
