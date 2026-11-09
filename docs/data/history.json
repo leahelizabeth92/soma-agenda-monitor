@@ -2982,5 +2982,75 @@
     "meetings_scanned": 3,
     "relevant_items": 0,
     "flagged": []
+  },
+  {
+    "date": "2026-11-09",
+    "generated": "2026-11-09T15:39:24",
+    "meetings_scanned": 4,
+    "relevant_items": 10,
+    "flagged": [
+      {
+        "body": "Board of Supervisors",
+        "date": "2026-11-10",
+        "items": [
+          {
+            "file": "261074",
+            "title": "Grant Agreement Amendment - Larkin Street Youth Services - Lark Inn Shelter - Not to Exceed $14,926,904",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8255276&GUID=39CBD3D3-AA2C-429A-AD85-DF182BFCAAE4&Options=&Search="
+          },
+          {
+            "file": "261075",
+            "title": "Contract Amendment - Bayview Hunters Point Foundation for Community Improvement - Bayview Navigation Center - Homeless Services - Not to Exceed $25,737,447",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8284196&GUID=80E80C2B-DC03-449E-B819-1528EC048661&Options=&Search="
+          },
+          {
+            "file": "261203",
+            "title": "Biannual Surveillance Report - Department of Homelessness and Supportive Housing - Security Cameras and Social Media Monitoring Software - 2026",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8307285&GUID=2FE4B151-1040-4243-B638-152CFEF40C2D&Options=&Search="
+          },
+          {
+            "file": "261012",
+            "title": "Appropriation - General Reserve - Mayor\u2019s Office of Housing and Community Development - Rent Relief Support Services - $3,940,000 - FY2026-2027",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8217288&GUID=50831A51-4BB2-4531-AD2C-E8B7EC6730BC&Options=&Search="
+          },
+          {
+            "file": "261148",
+            "title": "Appropriation - General Reserve - Mayor\u2019s Office of Housing and Community Development - Immigration Legal Services - $1,765,000 - FY2026-2027",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8298232&GUID=4C71F4F4-1E7E-4730-A9F1-4B181085FAA6&Options=&Search="
+          },
+          {
+            "file": "261234",
+            "title": "Formal Policy Discussions - November 10, 2026",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8310295&GUID=EFC1EC60-B116-4EFF-BA01-79182FEAE133&Options=&Search="
+          },
+          {
+            "file": "200777",
+            "title": "Hearing - Committee of the Whole - Update on Findings and Recommendations Regarding Law Enforcement Practices - November 10, 2026, at 3:00 p.m.",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=4594699&GUID=AB3E9454-6A3E-45D0-8EB7-23E824E032AE&Options=&Search="
+          },
+          {
+            "file": "261197",
+            "title": "Biannual Surveillance Report - Police Department - Automated License Plate Readers, ShotSpotter, and Non-City Entity Surveillance Cameras - 2026",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8307239&GUID=C5B3346B-B804-4533-B9BA-D19678BDF7BC&Options=&Search="
+          }
+        ]
+      },
+      {
+        "body": "Public Safety and Neighborhood Services Committee",
+        "date": "2026-11-12",
+        "items": [
+          {
+            "file": "260894",
+            "title": "Hearing - Rental Scams",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8156772&GUID=DA660F59-4FF6-4EE0-9309-60EE855B44EC&Options=&Search="
+          },
+          {
+            "file": "261171",
+            "title": "Health Code - Animal Shelter Holding Periods and Dog Sterilization, Pit Bull Sterilization, and Dog Breeding",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8304812&GUID=9FE2A8BC-53C4-42A2-9105-2758EE3D705E&Options=&Search="
+          }
+        ]
+      }
+    ]
   }
 ]
