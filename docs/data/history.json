@@ -3052,5 +3052,35 @@
         ]
       }
     ]
+  },
+  {
+    "date": "2026-11-12",
+    "generated": "2026-11-12T13:40:28",
+    "meetings_scanned": 2,
+    "relevant_items": 2,
+    "flagged": [
+      {
+        "body": "Public Safety and Neighborhood Services Committee",
+        "date": "2026-11-12",
+        "items": [
+          {
+            "file": "260894",
+            "title": "Hearing - Rental Scams",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8156772&GUID=DA660F59-4FF6-4EE0-9309-60EE855B44EC&Options=&Search="
+          }
+        ]
+      },
+      {
+        "body": "Land Use and Transportation Committee",
+        "date": "2026-11-16",
+        "items": [
+          {
+            "file": "220961",
+            "title": "Hearing - Traffic Enforcement and Street Safety",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=5817439&GUID=8571E6B6-79D6-4B99-8048-A921526A3E27&Options=&Search="
+          }
+        ]
+      }
+    ]
   }
 ]
