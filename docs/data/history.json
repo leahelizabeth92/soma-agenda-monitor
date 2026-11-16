@@ -3082,5 +3082,102 @@
         ]
       }
     ]
+  },
+  {
+    "date": "2026-11-16",
+    "generated": "2026-11-16T15:36:39",
+    "meetings_scanned": 4,
+    "relevant_items": 13,
+    "flagged": [
+      {
+        "body": "Land Use and Transportation Committee",
+        "date": "2026-11-16",
+        "items": [
+          {
+            "file": "220961",
+            "title": "Hearing - Traffic Enforcement and Street Safety",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=5817439&GUID=8571E6B6-79D6-4B99-8048-A921526A3E27&Options=&Search="
+          }
+        ]
+      },
+      {
+        "body": "Board of Supervisors",
+        "date": "2026-11-17",
+        "items": [
+          {
+            "file": "261148",
+            "title": "Appropriation - General Reserve - Mayor\u2019s Office of Housing and Community Development - Immigration Legal Services - $1,765,000 - FY2026-2027",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8298232&GUID=4C71F4F4-1E7E-4730-A9F1-4B181085FAA6&Options=&Search="
+          },
+          {
+            "file": "261241",
+            "title": "Settlement of Unlitigated Claims against Albertsons Companies, Inc. - City to Receive Between $1,181,106 and $3,170,338",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8314168&GUID=D0468430-31C4-4324-BEB7-09F2D0BDBEC5&Options=&Search="
+          }
+        ]
+      },
+      {
+        "body": "Budget and Finance Committee",
+        "date": "2026-11-18",
+        "items": [
+          {
+            "file": "261131",
+            "title": "Grant Agreement Amendment - Episcopal Community Services of San Francisco - Housing Navigation Services - Not to Exceed $22,749,253",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8293594&GUID=BFFBD6BD-F09D-4CE9-A3AE-447812967E63&Options=&Search="
+          },
+          {
+            "file": "261212",
+            "title": "Execute Standard Agreement - Accept and Expend Grant - Retroactive - Not to Exceed $17,291,506 - California Department of Housing and Community Development - Ho",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8311707&GUID=D8008D10-1CA7-4D1C-8438-FD82B77FDBCF&Options=&Search="
+          },
+          {
+            "file": "261153",
+            "title": "Grant Agreement Amendment - Abode Services - Prevention Fiscal Agent - Not to Exceed $29,062,174",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8298237&GUID=503569FD-0111-4457-9C45-2FB317C451C2&Options=&Search="
+          },
+          {
+            "file": "261157",
+            "title": "Loan Agreement - San Francisco SafeHouse Holdings, LLC - 100% Affordable Housing - 101 Gough Street - Not to Exceed $15,850,000",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8298239&GUID=BF09E170-CA03-4E03-896D-47F687658B66&Options=&Search="
+          },
+          {
+            "file": "261151",
+            "title": "Accept and Expend In-Kind Gift - Welcome Baby USA Inc - Newborn Care Packages - $118,800",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8298235&GUID=7EF07F91-7A84-480E-8D94-28BCE64361A5&Options=&Search="
+          },
+          {
+            "file": "261152",
+            "title": "Accept and Expend In-Kind Gift - California Department of Public Health - HCV Supplies - $50,000",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8298236&GUID=8484B787-DCA1-436E-A41F-B006DF511AD5&Options=&Search="
+          },
+          {
+            "file": "261119",
+            "title": "Agreement Amendment - Bayview Hunters Point Foundation - Methadone Services - Not to Exceed $18,253,903",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8284846&GUID=47C5B3DF-4AB0-459D-ACAF-24175E819EFD&Options=&Search="
+          },
+          {
+            "file": "261178",
+            "title": "Accept and Expend Funds - Grant Agreement - Retroactive - Department of Homeland Security - FEMA - Bay Area Host Committee - FIFA World Cup Grant Program - $2,7",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8304819&GUID=431E14D9-A191-4C13-8DF1-441296F7ABA3&Options=&Search="
+          },
+          {
+            "file": "261101",
+            "title": "Administrative Code - Sober Spaces Program and Fund",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8283726&GUID=C2CD6D5E-16CF-4837-91FA-A12E3C415A64&Options=&Search="
+          }
+        ]
+      },
+      {
+        "body": "Government Audit and Oversight Committee",
+        "date": "2026-11-19",
+        "items": [
+          {
+            "file": "261098",
+            "title": "Hearing - Street Conditions and Responsive City Services at Public School Sites",
+            "url": "https://sfgov.legistar.com/LegislationDetail.aspx?ID=8259925&GUID=8A23EEA3-DB56-4377-A722-B374869F44B5&Options=&Search="
+          }
+        ]
+      }
+    ]
   }
 ]
